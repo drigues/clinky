@@ -48,10 +48,10 @@ Não escrevas código sem ter lido os ficheiros acima. Se algo não estiver clar
 
 Actualiza esta secção após cada sessão concluída.
 
-- [ ] `PROMPTS/00-foundation.md` — Fundação Laravel, homepage, admin, deploy
-- [ ] `PROMPTS/01-desculpometro.md` — `desculpometro.clinky.cc` (Claude API)
-- [ ] `PROMPTS/02-05-mini-sites.md` — Botão, Nomeador, Horóscopo, Analisador de Nome
-- [ ] `PROMPTS/06-09-BR-PT-sites.md` — Bingo, Conversor PT/BR, Quiz, Corporativo
+- [x] `PROMPTS/00-foundation.md` — Fundação Laravel, homepage, admin, deploy
+- [x] `PROMPTS/01-desculpometro.md` — `desculpometro.clinky.cc` (Claude API)
+- [x] `PROMPTS/02-05-mini-sites.md` — Botão, Nomeador, Horóscopo, Analisador de Nome
+- [x] `PROMPTS/06-09-BR-PT-sites.md` — Bingo, Conversor PT/BR, Quiz, Corporativo
 
 ---
 
@@ -165,12 +165,12 @@ SESSION_EXPIRE_ON_CLOSE=true
 
 | Slug | Subdomínio | Claude API | Status |
 |---|---|---|---|
-| `desculpometro` | desculpometro.clinky.cc | Sim | `[ ]` |
-| `botao` | botao.clinky.cc | Não | `[ ]` |
-| `nomeador` | nomeador.clinky.cc | Não | `[ ]` |
-| `horoscopo` | horoscopo.clinky.cc | Não | `[ ]` |
-| `nome` | nome.clinky.cc | Sim | `[ ]` |
-| `bingo` | bingo.clinky.cc | Não | `[ ]` |
-| `conversor` | conversor.clinky.cc | Não | `[ ]` |
-| `quiz` | quiz.clinky.cc | Não | `[ ]` |
-| `corporativo` | corporativo.clinky.cc | Sim | `[ ]` |
+| `desculpometro` | desculpometro.clinky.cc | Sim | `[x]` |
+| `botao` | botao.clinky.cc | Não | `[x]` |
+| `nomeador` | nomeador.clinky.cc | Não | `[x]` |
+| `horoscopo` | horoscopo.clinky.cc | Não | `[x]` |
+| `nome` | nome.clinky.cc | Sim | `[x]` |
+| `bingo` | bingo.clinky.cc | Não | `[x]` |
+| `conversor` | conversor.clinky.cc | Não | `[x]` |
+| `quiz` | quiz.clinky.cc | Não | `[x]` |
+| `corporativo` | corporativo.clinky.cc | Sim | `[x]` |

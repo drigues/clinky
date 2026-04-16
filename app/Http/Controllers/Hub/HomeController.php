@@ -16,7 +16,7 @@ class HomeController extends Controller
                 'tagline' => 'Gera a desculpa perfeita',
                 'color' => 'orange',
                 'url' => 'https://desculpometro.' . config('app.base_domain'),
-                'live' => false,
+                'live' => true,
                 'tag' => 'Top',
             ],
             [
@@ -26,7 +26,7 @@ class HomeController extends Controller
                 'tagline' => 'Um botão. Sem explicação.',
                 'color' => 'red',
                 'url' => 'https://botao.' . config('app.base_domain'),
-                'live' => false,
+                'live' => true,
                 'tag' => 'Em Alta',
             ],
             [
@@ -36,7 +36,7 @@ class HomeController extends Controller
                 'tagline' => 'Nomes épicos para o teu WhatsApp',
                 'color' => 'lime',
                 'url' => 'https://nomeador.' . config('app.base_domain'),
-                'live' => false,
+                'live' => true,
                 'tag' => null,
             ],
             [
@@ -46,17 +46,17 @@ class HomeController extends Controller
                 'tagline' => 'Previsões 100% inventadas',
                 'color' => 'purple',
                 'url' => 'https://horoscopo.' . config('app.base_domain'),
-                'live' => false,
+                'live' => true,
                 'tag' => null,
             ],
             [
                 'slug' => 'nome',
                 'title' => 'Analisador de Nome',
-                'emoji' => '🎯',
+                'emoji' => '🧬',
                 'tagline' => 'Descobre o que o teu nome diz',
-                'color' => 'blue',
+                'color' => 'teal',
                 'url' => 'https://nome.' . config('app.base_domain'),
-                'live' => false,
+                'live' => true,
                 'tag' => null,
             ],
             [
@@ -66,7 +66,7 @@ class HomeController extends Controller
                 'tagline' => 'Reconheces a tua vida em Portugal?',
                 'color' => 'teal',
                 'url' => 'https://bingo.' . config('app.base_domain'),
-                'live' => false,
+                'live' => true,
                 'tag' => 'PT/BR',
             ],
             [
@@ -76,7 +76,7 @@ class HomeController extends Controller
                 'tagline' => 'Traduz entre português e brasileiro',
                 'color' => 'yellow',
                 'url' => 'https://conversor.' . config('app.base_domain'),
-                'live' => false,
+                'live' => true,
                 'tag' => 'PT/BR',
             ],
             [
@@ -86,7 +86,7 @@ class HomeController extends Controller
                 'tagline' => 'Descobre o teu nível de sotaque',
                 'color' => 'pink',
                 'url' => 'https://quiz.' . config('app.base_domain'),
-                'live' => false,
+                'live' => true,
                 'tag' => 'PT/BR',
             ],
             [
@@ -96,7 +96,7 @@ class HomeController extends Controller
                 'tagline' => 'O que realmente querem dizer',
                 'color' => 'teal',
                 'url' => 'https://corporativo.' . config('app.base_domain'),
-                'live' => false,
+                'live' => true,
                 'tag' => null,
             ],
         ]);
