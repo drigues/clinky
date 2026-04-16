@@ -42,6 +42,14 @@
         </section>
 
         <section>
+            <h2 class="text-lg font-semibold">Cookies e Analytics</h2>
+            <p>Usamos <strong>Google Analytics 4</strong> para perceber quais mini-sites funcionam melhor. O GA só carrega após aceitares no banner.</p>
+            <p class="mt-2">Recolhemos: páginas visitadas, tempo na página, país aproximado, tipo de dispositivo.</p>
+            <p class="mt-2"><strong>Não recolhemos:</strong> nome, email, endereço IP completo (anonimizado), nem qualquer input que escrevas nos mini-sites.</p>
+            <p class="mt-2">Para revogar o consentimento, limpa os dados deste site no teu browser (o banner aparecerá novamente).</p>
+        </section>
+
+        <section>
             <h2 class="text-lg font-semibold">Os teus direitos</h2>
             <p>Como não guardamos dados pessoais, não existe informação tua para aceder, corrigir ou eliminar. Se tiveres alguma questão, contacta-nos.</p>
         </section>

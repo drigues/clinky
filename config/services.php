@@ -43,4 +43,8 @@ return [
         'site_id' => env('FATHOM_SITE_ID'),
     ],
 
+    'google_analytics' => [
+        'measurement_id' => env('GA_MEASUREMENT_ID'),
+    ],
+
 ];

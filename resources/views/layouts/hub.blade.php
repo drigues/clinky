@@ -38,6 +38,8 @@
 
     @stack('structured_data')
 
+    <x-google-analytics />
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('head')
 </head>
@@ -48,5 +50,6 @@
     </main>
 
     @stack('scripts')
+    <x-cookie-banner />
 </body>
 </html>
