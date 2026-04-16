@@ -43,15 +43,9 @@
 </head>
 <body class="bg-[#0a0a0a] text-zinc-100 antialiased">
 
-    <main class="min-h-screen">
+    <main>
         @yield('content')
     </main>
-
-    <footer class="py-8 text-center text-xs text-zinc-600">
-        <a href="{{ route('privacidade') }}" class="hover:text-zinc-400 transition-colors">Privacidade</a>
-        <span class="mx-2">·</span>
-        <span>Clinky.cc &copy; {{ date('Y') }}</span>
-    </footer>
 
     @stack('scripts')
 </body>

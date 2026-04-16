@@ -7,7 +7,7 @@
 <script type="application/ld+json">
 {
   "@@context": "https://schema.org",
-  "@type": "WebSite",
+  "@@type": "WebSite",
   "name": "Clinky.cc",
   "description": "Hub de mini-sites virais, inúteis e partilháveis",
   "url": "{{ route('home') }}",
@@ -16,117 +16,144 @@
 </script>
 @endpush
 
+@push('head')
+<style>
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.35s; }
+.reveal-delay-4 { transition-delay: 0.5s; }
+</style>
+@endpush
+
 @section('content')
-<div class="w-full max-w-[560px] mx-auto px-6 py-16">
 
-    <header class="text-center mb-10">
-        <h1 class="text-5xl font-black tracking-tight logo-shimmer">
-            <span aria-hidden="true">&#10022;</span> Clinky.cc
-        </h1>
-        <p class="mt-3 text-[#71717a] text-sm leading-relaxed max-w-xs mx-auto">
-            Mini-sites virais, inúteis e partilháveis.<br>
-            Sem registo, sem dados, sem sentido.
+{{-- ==================== HERO ==================== --}}
+<section class="relative min-h-screen flex flex-col items-center justify-center bg-[#0a0a0a] overflow-hidden">
+
+    <div class="absolute inset-0 opacity-10"
+         style="background-image: radial-gradient(circle, #c8f135 1px, transparent 1px); background-size: 40px 40px;"></div>
+
+    <div class="absolute inset-0"
+         style="background: radial-gradient(ellipse at center, #c8f13515 0%, transparent 70%)"></div>
+
+    <div class="relative z-10 text-center px-6">
+        <p class="text-xs font-bold uppercase tracking-[0.4em] text-[#c8f135]/60 mb-8 reveal">
+            ✦ Sites bestas que valem a pena ✦
         </p>
-    </header>
+        <h1 class="text-[clamp(4rem,15vw,10rem)] font-black text-white leading-[0.85] tracking-tight mb-6 reveal reveal-delay-1">
+            Clin<span style="color: #c8f135">ky</span>.cc
+        </h1>
+        <p class="text-lg text-white/50 max-w-sm mx-auto leading-relaxed mb-12 reveal reveal-delay-2">
+            Mini-sites virais, inúteis e partilháveis.<br>
+            Sem registo. Sem dados. Sem sentido.
+        </p>
+        <div class="flex items-center justify-center gap-2 text-white/30 text-sm reveal reveal-delay-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#c8f135] animate-pulse"></span>
+            Scroll para explorar
+        </div>
+    </div>
 
-    <div class="flex flex-col gap-3">
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/20 animate-bounce">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+    </div>
 
-        {{-- Desculpómetro — TOP --}}
-        <a href="{{ route('desculpometro.index') }}"
-           class="group flex items-center gap-4 w-full p-4 rounded-2xl border border-[#1e1e1e] bg-[#141414] hover:border-[#c8f135]/60 hover:shadow-[0_0_20px_-6px_rgba(200,241,53,0.15)] hover:bg-[#1a1a1a] hover:-translate-y-0.5 transition-all duration-200 relative">
-            <span class="absolute top-2.5 right-3 text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full bg-[#c8f135]/15 text-[#c8f135]">TOP</span>
-            <span class="text-4xl shrink-0 transition-transform duration-200 group-hover:scale-110">😅</span>
-            <div class="text-left">
-                <p class="text-[#f4f4f5] font-bold text-lg leading-tight tracking-tight">Desculpómetro</p>
-                <p class="text-[#71717a] text-sm mt-0.5">Gera a desculpa perfeita</p>
-            </div>
-        </a>
+</section>
 
-        {{-- Aperta o Botão — EM ALTA --}}
-        <a href="{{ route('botao.index') }}"
-           class="group flex items-center gap-4 w-full p-4 rounded-2xl border border-[#1e1e1e] bg-[#141414] hover:border-orange-500/60 hover:shadow-[0_0_20px_-6px_rgba(249,115,22,0.15)] hover:bg-[#1a1a1a] hover:-translate-y-0.5 transition-all duration-200 relative">
-            <span class="absolute top-2.5 right-3 text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full bg-orange-500/15 text-orange-400">EM ALTA</span>
-            <span class="text-4xl shrink-0 transition-transform duration-200 group-hover:scale-110">🔴</span>
-            <div class="text-left">
-                <p class="text-[#f4f4f5] font-bold text-lg leading-tight tracking-tight">Aperta o Botão</p>
-                <p class="text-[#71717a] text-sm mt-0.5">Um botão. Sem explicação.</p>
-            </div>
-        </a>
+{{-- ==================== SECÇÕES ==================== --}}
+@foreach($sites as $site)
+<section class="relative min-h-screen flex items-center overflow-hidden"
+         style="background-color: {{ $site['bg'] }}">
 
-        {{-- Nomeador de Grupos --}}
-        <a href="{{ route('nomeador.index') }}"
-           class="group flex items-center gap-4 w-full p-4 rounded-2xl border border-[#1e1e1e] bg-[#141414] hover:border-zinc-600/60 hover:bg-[#1a1a1a] hover:-translate-y-0.5 transition-all duration-200 relative">
-            <span class="text-4xl shrink-0 transition-transform duration-200 group-hover:scale-110">💬</span>
-            <div class="text-left">
-                <p class="text-[#f4f4f5] font-bold text-lg leading-tight tracking-tight">Nomeador de Grupos</p>
-                <p class="text-[#71717a] text-sm mt-0.5">Nomes épicos para o teu WhatsApp</p>
-            </div>
-        </a>
+    @if($site['has_image'])
+    <div class="absolute inset-0 z-0">
+        <img src="{{ asset('images/og/' . $site['slug'] . '.png') }}"
+             alt=""
+             loading="lazy"
+             width="1200"
+             height="630"
+             class="w-full h-full object-cover opacity-20 mix-blend-luminosity">
+    </div>
+    @endif
 
-        {{-- Horóscopo Inútil --}}
-        <a href="{{ route('horoscopo.index') }}"
-           class="group flex items-center gap-4 w-full p-4 rounded-2xl border border-[#1e1e1e] bg-[#141414] hover:border-zinc-600/60 hover:bg-[#1a1a1a] hover:-translate-y-0.5 transition-all duration-200 relative">
-            <span class="text-4xl shrink-0 transition-transform duration-200 group-hover:scale-110">🔮</span>
-            <div class="text-left">
-                <p class="text-[#f4f4f5] font-bold text-lg leading-tight tracking-tight">Horóscopo Inútil</p>
-                <p class="text-[#71717a] text-sm mt-0.5">Previsões 100% inventadas</p>
-            </div>
-        </a>
+    <div class="absolute inset-0 z-0"
+         style="background: linear-gradient(135deg, {{ $site['bg'] }}ee 0%, {{ $site['bg'] }}88 50%, transparent 100%)"></div>
 
-        {{-- Analisador de Nome --}}
-        <a href="{{ route('nome.index') }}"
-           class="group flex items-center gap-4 w-full p-4 rounded-2xl border border-[#1e1e1e] bg-[#141414] hover:border-zinc-600/60 hover:bg-[#1a1a1a] hover:-translate-y-0.5 transition-all duration-200 relative">
-            <span class="text-4xl shrink-0 transition-transform duration-200 group-hover:scale-110">🧬</span>
-            <div class="text-left">
-                <p class="text-[#f4f4f5] font-bold text-lg leading-tight tracking-tight">Analisador de Nome</p>
-                <p class="text-[#71717a] text-sm mt-0.5">Descobre o que o teu nome diz</p>
-            </div>
-        </a>
+    <div class="relative z-10 max-w-2xl mx-auto px-6 py-24 md:px-12">
 
-        {{-- Bingo do Imigrante — PT/BR --}}
-        <a href="{{ route('bingo.index') }}"
-           class="group flex items-center gap-4 w-full p-4 rounded-2xl border border-[#1e1e1e] bg-[#141414] hover:border-purple-500/60 hover:shadow-[0_0_20px_-6px_rgba(168,85,247,0.15)] hover:bg-[#1a1a1a] hover:-translate-y-0.5 transition-all duration-200 relative">
-            <span class="absolute top-2.5 right-3 text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full bg-purple-500/15 text-purple-400">PT/BR</span>
-            <span class="text-4xl shrink-0 transition-transform duration-200 group-hover:scale-110">🎯</span>
-            <div class="text-left">
-                <p class="text-[#f4f4f5] font-bold text-lg leading-tight tracking-tight">Bingo do Imigrante</p>
-                <p class="text-[#71717a] text-sm mt-0.5">Reconheces a tua vida em Portugal?</p>
-            </div>
-        </a>
+        <p class="text-xs font-bold uppercase tracking-[0.3em] text-white/40 mb-4 reveal">
+            {{ str_pad($site['n'], 2, '0', STR_PAD_LEFT) }} — {{ $site['cat'] }}
+        </p>
 
-        {{-- Conversor PT ↔ BR — PT/BR --}}
-        <a href="{{ route('conversor.index') }}"
-           class="group flex items-center gap-4 w-full p-4 rounded-2xl border border-[#1e1e1e] bg-[#141414] hover:border-purple-500/60 hover:shadow-[0_0_20px_-6px_rgba(168,85,247,0.15)] hover:bg-[#1a1a1a] hover:-translate-y-0.5 transition-all duration-200 relative">
-            <span class="absolute top-2.5 right-3 text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full bg-purple-500/15 text-purple-400">PT/BR</span>
-            <span class="text-4xl shrink-0 transition-transform duration-200 group-hover:scale-110">🇵🇹🇧🇷</span>
-            <div class="text-left">
-                <p class="text-[#f4f4f5] font-bold text-lg leading-tight tracking-tight">Conversor PT ↔ BR</p>
-                <p class="text-[#71717a] text-sm mt-0.5">Traduz entre português e brasileiro</p>
-            </div>
-        </a>
+        <div class="text-8xl mb-6 reveal reveal-delay-1">{{ $site['emoji'] }}</div>
 
-        {{-- Sou mais BR ou PT? — PT/BR --}}
-        <a href="{{ route('quiz.index') }}"
-           class="group flex items-center gap-4 w-full p-4 rounded-2xl border border-[#1e1e1e] bg-[#141414] hover:border-purple-500/60 hover:shadow-[0_0_20px_-6px_rgba(168,85,247,0.15)] hover:bg-[#1a1a1a] hover:-translate-y-0.5 transition-all duration-200 relative">
-            <span class="absolute top-2.5 right-3 text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full bg-purple-500/15 text-purple-400">PT/BR</span>
-            <span class="text-4xl shrink-0 transition-transform duration-200 group-hover:scale-110">🤔</span>
-            <div class="text-left">
-                <p class="text-[#f4f4f5] font-bold text-lg leading-tight tracking-tight">Sou mais BR ou PT?</p>
-                <p class="text-[#71717a] text-sm mt-0.5">Descobre o teu nível de sotaque</p>
-            </div>
-        </a>
+        <h2 class="text-5xl md:text-7xl font-black text-white leading-[0.9] tracking-tight mb-4 reveal reveal-delay-2">
+            {{ $site['title'] }}
+        </h2>
 
-        {{-- Tradutor Corporativo --}}
-        <a href="{{ route('corporativo.index') }}"
-           class="group flex items-center gap-4 w-full p-4 rounded-2xl border border-[#1e1e1e] bg-[#141414] hover:border-zinc-600/60 hover:bg-[#1a1a1a] hover:-translate-y-0.5 transition-all duration-200 relative">
-            <span class="text-4xl shrink-0 transition-transform duration-200 group-hover:scale-110">💼</span>
-            <div class="text-left">
-                <p class="text-[#f4f4f5] font-bold text-lg leading-tight tracking-tight">Tradutor Corporativo</p>
-                <p class="text-[#71717a] text-sm mt-0.5">O que realmente querem dizer</p>
-            </div>
-        </a>
+        <p class="text-xl text-white/70 max-w-md leading-relaxed mb-10 reveal reveal-delay-3">
+            {{ $site['desc'] }}
+        </p>
+
+        <div class="flex items-center flex-wrap gap-4 reveal reveal-delay-4">
+            <a href="/{{ $site['slug'] }}"
+               class="inline-flex items-center gap-3 bg-white text-black font-bold text-lg px-8 py-4 rounded-full hover:scale-105 active:scale-95 transition-transform">
+                Experimentar agora
+                <span class="text-2xl">→</span>
+            </a>
+
+            @if($site['tag'])
+            <span class="inline-block text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full"
+                  style="background: {{ $site['tag_bg'] }}; color: {{ $site['tag_text'] }}">
+                {{ $site['tag'] }}
+            </span>
+            @endif
+        </div>
 
     </div>
 
-</div>
+    <div class="absolute right-0 top-1/2 -translate-y-1/2 text-[20rem] font-black text-white/5 select-none leading-none pr-4 hidden md:block">
+        {{ str_pad($site['n'], 2, '0', STR_PAD_LEFT) }}
+    </div>
+
+</section>
+@endforeach
+
+{{-- ==================== FOOTER ==================== --}}
+<footer class="bg-[#0a0a0a] border-t border-white/10 py-12 text-center">
+    <p class="text-3xl font-black text-white mb-2">Clinky<span style="color:#c8f135">.cc</span></p>
+    <p class="text-white/30 text-sm mb-6">Mini-sites virais, inúteis e partilháveis.</p>
+    <div class="flex justify-center gap-6 text-white/30 text-xs">
+        <a href="{{ route('privacidade') }}" class="hover:text-white/60 transition-colors">Privacidade</a>
+        <span>·</span>
+        <span>&copy; {{ date('Y') }} Clinky.cc</span>
+        <span>·</span>
+        <a href="https://thr33.xyz" target="_blank" rel="noopener noreferrer" class="hover:text-white/60 transition-colors">thr33.xyz</a>
+    </div>
+</footer>
+
 @endsection
+
+@push('scripts')
+<script>
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+        }
+    });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+@endpush
