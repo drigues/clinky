@@ -102,7 +102,7 @@ class CorporativoController extends Controller
             'og_title' => '💼 "Vamos alinhar" = reunião desnecessária. Descobre mais!',
             'og_description' => 'Traduz jargão corporativo para português real. Finalmente vais perceber o que dizem nas reuniões.',
             'og_image' => asset('images/og/corporativo.png'),
-            'canonical' => 'https://corporativo.' . config('app.base_domain'),
+            'canonical' => route('corporativo.index'),
         ];
     }
 }

@@ -122,7 +122,7 @@ class HoroscopoController extends Controller
             'og_title' => '🔮 Horóscopo de hoje: as estrelas encolheram os ombros',
             'og_description' => 'Previsões diárias 100% inventadas. As estrelas não se responsabilizam.',
             'og_image' => asset('images/og/horoscopo.png'),
-            'canonical' => 'https://horoscopo.' . config('app.base_domain'),
+            'canonical' => route('horoscopo.index'),
         ];
     }
 
@@ -134,7 +134,7 @@ class HoroscopoController extends Controller
             'og_title' => "{$info[0]} Horóscopo de {$info[1]} — O que as estrelas dizem hoje",
             'og_description' => 'Descobre a tua previsão diária. As estrelas não se responsabilizam.',
             'og_image' => asset('images/og/horoscopo.png'),
-            'canonical' => "https://horoscopo." . config('app.base_domain') . "/{$signo}",
+            'canonical' => route('horoscopo.signo', $signo),
         ];
     }
 }

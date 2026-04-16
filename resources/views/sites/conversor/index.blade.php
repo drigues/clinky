@@ -18,7 +18,7 @@
   "operatingSystem": "Web",
   "offers": { "@@type": "Offer", "price": "0", "priceCurrency": "EUR" },
   "inLanguage": "pt-PT",
-  "isPartOf": { "@@type": "WebSite", "name": "Clinky.cc", "url": "https://{{ config('app.base_domain') }}" }
+  "isPartOf": { "@@type": "WebSite", "name": "Clinky.cc", "url": "{{ route('home') }}" }
 }
 </script>
 @endpush
@@ -106,7 +106,7 @@
             if (s.palavra) return 'Sabias que «' + s.palavra.pt + '» em PT = «' + s.palavra.br + '» em BR? 🇵🇹🇧🇷';
             return 'Descobre as diferenças entre português de Portugal e do Brasil 🇵🇹🇧🇷';
         },
-        shareUrl: 'https://conversor.{{ config('app.base_domain') }}',
+        shareUrl: '{{ route('conversor.index') }}',
         canShare: typeof navigator.share !== 'undefined',
         copied: false,
         track(platform) {

@@ -18,7 +18,7 @@
   "operatingSystem": "Web",
   "offers": { "@@type": "Offer", "price": "0", "priceCurrency": "EUR" },
   "inLanguage": "pt-PT",
-  "isPartOf": { "@@type": "WebSite", "name": "Clinky.cc", "url": "https://{{ config('app.base_domain') }}" }
+  "isPartOf": { "@@type": "WebSite", "name": "Clinky.cc", "url": "{{ route('home') }}" }
 }
 </script>
 @endpush
@@ -38,7 +38,7 @@
 
         <div class="grid grid-cols-3 gap-3">
             @foreach($signos as $slug => $info)
-            <a href="{{ url($slug) }}"
+            <a href="{{ route('horoscopo.signo', $slug) }}"
                class="flex flex-col items-center p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:border-purple-300 dark:hover:border-purple-700 hover:shadow-md transition-all duration-200 group">
                 <span class="text-3xl mb-1 transition-transform duration-200 group-hover:scale-110">{{ $info[0] }}</span>
                 <span class="text-xs font-semibold text-zinc-900 dark:text-zinc-100">{{ $info[1] }}</span>

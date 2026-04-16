@@ -118,8 +118,6 @@ return [
     |
     */
 
-    'base_domain' => env('BASE_DOMAIN', 'clinky.cc'),
-
     'maintenance' => [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
         'store' => env('APP_MAINTENANCE_STORE', 'database'),

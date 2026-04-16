@@ -8,7 +8,7 @@
 ## O projecto
 
 **Clinky.cc** é um hub de mini-sites virais, inúteis e partilháveis via WhatsApp e redes sociais.
-Cada mini-site vive num subdomínio próprio (`desculpometro.clinky.cc`, `botao.clinky.cc`, etc.).
+Cada mini-site vive num directório próprio (`clinky.cc/desculpometro`, `clinky.cc/botao`, etc.).
 
 **Repositório:** `clinky-cc` no GitHub
 **Servidor:** Hetzner via Laravel Forge
@@ -39,7 +39,7 @@ Não escrevas código sem ter lido os ficheiros acima. Se algo não estiver clar
 | Admin | Filament 3 (`clinky.cc/admin`) |
 | IA | Claude API — modelo `claude-sonnet-4-20250514` |
 | Deploy | GitHub → Laravel Forge → Hetzner |
-| SSL | Wildcard `*.clinky.cc` (Let's Encrypt via Forge) |
+| SSL | Let's Encrypt via Forge |
 | Analytics | Fathom Analytics (cookieless, GDPR-native) |
 
 ---
@@ -135,8 +135,7 @@ clinky.cc/
 │       ├── site-header.blade.php
 │       └── counter-badge.blade.php
 ├── routes/
-│   ├── web.php
-│   └── subdomains.php
+│   └── web.php
 └── public/
     └── images/
         └── og/                        ← OG images 1200×630px por mini-site
@@ -149,7 +148,6 @@ clinky.cc/
 ```env
 APP_NAME="Clinky.cc"
 APP_URL=https://clinky.cc
-BASE_DOMAIN=clinky.cc
 
 CLAUDE_API_KEY=
 FATHOM_SITE_ID=
@@ -165,12 +163,12 @@ SESSION_EXPIRE_ON_CLOSE=true
 
 | Slug | Subdomínio | Claude API | Status |
 |---|---|---|---|
-| `desculpometro` | desculpometro.clinky.cc | Sim | `[x]` |
-| `botao` | botao.clinky.cc | Não | `[x]` |
-| `nomeador` | nomeador.clinky.cc | Não | `[x]` |
-| `horoscopo` | horoscopo.clinky.cc | Não | `[x]` |
-| `nome` | nome.clinky.cc | Sim | `[x]` |
-| `bingo` | bingo.clinky.cc | Não | `[x]` |
-| `conversor` | conversor.clinky.cc | Não | `[x]` |
-| `quiz` | quiz.clinky.cc | Não | `[x]` |
-| `corporativo` | corporativo.clinky.cc | Sim | `[x]` |
+| `desculpometro` | clinky.cc/desculpometro | Sim | `[x]` |
+| `botao` | clinky.cc/botao | Não | `[x]` |
+| `nomeador` | clinky.cc/nomeador | Não | `[x]` |
+| `horoscopo` | clinky.cc/horoscopo | Não | `[x]` |
+| `nome` | clinky.cc/nome | Sim | `[x]` |
+| `bingo` | clinky.cc/bingo | Não | `[x]` |
+| `conversor` | clinky.cc/conversor | Não | `[x]` |
+| `quiz` | clinky.cc/quiz | Não | `[x]` |
+| `corporativo` | clinky.cc/corporativo | Sim | `[x]` |

@@ -19,7 +19,7 @@ class RobotsController extends Controller
             'Disallow: /*.env',
             'Disallow: /*.log',
             '',
-            'Sitemap: https://' . config('app.base_domain') . '/sitemap.xml',
+            'Sitemap: ' . route('sitemap'),
         ]);
 
         return response($content, 200, ['Content-Type' => 'text/plain']);

@@ -6,6 +6,33 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: system-ui, -apple-system, sans-serif;
-    --font-display: 'Syne', sans-serif;
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-display: 'Inter', system-ui, sans-serif;
+
+    --color-surface: #141414;
+    --color-surface-border: #1e1e1e;
+    --color-accent-lime: #c8f135;
+    --color-accent-purple: #a855f7;
+    --color-accent-orange: #f97316;
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+}
+
+.logo-shimmer {
+    background: linear-gradient(
+        90deg,
+        #f4f4f5 0%,
+        #c8f135 25%,
+        #f4f4f5 50%,
+        #a855f7 75%,
+        #f4f4f5 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 6s linear infinite;
 }

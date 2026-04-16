@@ -53,7 +53,7 @@ class BingoController extends Controller
             'og_title' => '🎯 Bingo do Imigrante — quantos já te aconteceram?',
             'og_description' => 'Já disseste "vou já" e ficaste 3 horas? Já ficaste confuso com "bicha"? Joga o Bingo!',
             'og_image' => asset('images/og/bingo.png'),
-            'canonical' => 'https://bingo.' . config('app.base_domain'),
+            'canonical' => route('bingo.index'),
         ];
     }
 }

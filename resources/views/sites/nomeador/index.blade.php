@@ -18,7 +18,7 @@
   "operatingSystem": "Web",
   "offers": { "@@type": "Offer", "price": "0", "priceCurrency": "EUR" },
   "inLanguage": "pt-PT",
-  "isPartOf": { "@@type": "WebSite", "name": "Clinky.cc", "url": "https://{{ config('app.base_domain') }}" }
+  "isPartOf": { "@@type": "WebSite", "name": "Clinky.cc", "url": "{{ route('home') }}" }
 }
 </script>
 @endpush
@@ -83,7 +83,7 @@
 </div>
 
 <div x-data="{
-        shareUrl: 'https://nomeador.{{ config('app.base_domain') }}',
+        shareUrl: '{{ route('nomeador.index') }}',
         shareText: 'Encontrei o nome perfeito para o grupo!\n\n💬 Descobre o teu em:',
         canShare: typeof navigator.share !== 'undefined',
         copied: false,
@@ -139,7 +139,7 @@ document.addEventListener('alpine:init', () => {
             this.loading = true
             this.copiado = null
             try {
-                const res = await fetch('/gerar', {
+                const res = await fetch('{{ route('nomeador.gerar') }}', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

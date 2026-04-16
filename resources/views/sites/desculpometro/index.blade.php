@@ -18,7 +18,7 @@
   "operatingSystem": "Web",
   "offers": { "@@type": "Offer", "price": "0", "priceCurrency": "EUR" },
   "inLanguage": "pt-PT",
-  "isPartOf": { "@@type": "WebSite", "name": "Clinky.cc", "url": "https://{{ config('app.base_domain') }}" }
+  "isPartOf": { "@@type": "WebSite", "name": "Clinky.cc", "url": "{{ route('home') }}" }
 }
 </script>
 @endpush
@@ -86,7 +86,7 @@
             <div class="text-3xl mb-3">😅</div>
             <p class="text-lg font-medium text-zinc-900 dark:text-zinc-100 leading-relaxed" x-text="resultado"></p>
             <div class="mt-4 pt-4 border-t border-zinc-100 dark:border-zinc-800">
-                <a href="https://{{ config('app.base_domain') }}" class="text-xs text-zinc-400 hover:text-zinc-500">clinky.cc</a>
+                <a href="{{ route('home') }}" class="text-xs text-zinc-400 hover:text-zinc-500">clinky.cc</a>
             </div>
         </div>
     </div>
@@ -111,8 +111,8 @@
 </div>
 
 <div x-data="{
-        get shareText() { return Alpine.store('desculpometro').resultado + '\n\n😅 Gera a tua em: https://desculpometro.{{ config('app.base_domain') }}' },
-        shareUrl: 'https://desculpometro.{{ config('app.base_domain') }}',
+        get shareText() { return Alpine.store('desculpometro').resultado + '\n\n😅 Gera a tua em: {{ route('desculpometro.index') }}' },
+        shareUrl: '{{ route('desculpometro.index') }}',
         canShare: typeof navigator.share !== 'undefined',
         copied: false,
         track(platform) {
@@ -167,7 +167,7 @@ document.addEventListener('alpine:init', () => {
             this.resultado = ''
             this.erro = ''
             try {
-                const res = await fetch('/gerar', {
+                const res = await fetch('{{ route('desculpometro.gerar') }}', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

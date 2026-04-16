@@ -61,7 +61,7 @@ class DesculpometroController extends Controller
             'og_title' => '😅 Desculpómetro — a culpa foi do gato filosófico',
             'og_description' => 'Gera a tua desculpa perfeita agora. Grátis, anónimo, partilhável.',
             'og_image' => asset('images/og/desculpometro.png'),
-            'canonical' => 'https://desculpometro.' . config('app.base_domain'),
+            'canonical' => route('desculpometro.index'),
         ];
     }
 }

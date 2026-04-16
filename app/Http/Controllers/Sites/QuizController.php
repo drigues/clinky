@@ -121,7 +121,7 @@ class QuizController extends Controller
             'og_title' => '🤔 Fiz o teste: sou X% português e Y% brasileiro',
             'og_description' => 'Quiz de 5 perguntas para descobrir se és mais BR ou PT. Resultado partilhável.',
             'og_image' => asset('images/og/quiz.png'),
-            'canonical' => 'https://quiz.' . config('app.base_domain'),
+            'canonical' => route('quiz.index'),
         ];
     }
 }

@@ -177,7 +177,7 @@ class NomeadorController extends Controller
             'og_title' => '💬 O melhor nome de grupo que algures existiu',
             'og_description' => 'Gera nomes épicos para os teus grupos de WhatsApp. Grátis e partilhável.',
             'og_image' => asset('images/og/nomeador.png'),
-            'canonical' => 'https://nomeador.' . config('app.base_domain'),
+            'canonical' => route('nomeador.index'),
         ];
     }
 }

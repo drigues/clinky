@@ -31,7 +31,7 @@
         </div>
 
         <div class="mt-6 text-center">
-            <a href="{{ url('/') }}"
+            <a href="{{ route('horoscopo.index') }}"
                class="text-sm text-purple-500 hover:text-purple-600 dark:text-purple-400 dark:hover:text-purple-300 font-medium transition-colors">
                 ← Ver todos os signos
             </a>

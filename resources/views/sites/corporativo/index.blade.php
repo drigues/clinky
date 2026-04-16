@@ -18,7 +18,7 @@
   "operatingSystem": "Web",
   "offers": { "@@type": "Offer", "price": "0", "priceCurrency": "EUR" },
   "inLanguage": "pt-PT",
-  "isPartOf": { "@@type": "WebSite", "name": "Clinky.cc", "url": "https://{{ config('app.base_domain') }}" }
+  "isPartOf": { "@@type": "WebSite", "name": "Clinky.cc", "url": "{{ route('home') }}" }
 }
 </script>
 @endpush
@@ -120,7 +120,7 @@
             if (s.traducao) return '💼 «' + s.texto + '» = ' + s.traducao + '\n\nDescobre mais traduções em:';
             return '';
         },
-        shareUrl: 'https://corporativo.{{ config('app.base_domain') }}',
+        shareUrl: '{{ route('corporativo.index') }}',
         canShare: typeof navigator.share !== 'undefined',
         copied: false,
         track(platform) {
@@ -170,7 +170,7 @@ document.addEventListener('alpine:init', () => {
             this.traducao = '';
             this.erro = '';
             try {
-                const res = await fetch('/traduzir', {
+                const res = await fetch('{{ route('corporativo.traduzir') }}', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

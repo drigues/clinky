@@ -51,7 +51,7 @@ class BotaoController extends Controller
             'og_title' => "🔴 Aperta o Botão — {$formatted} pessoas não resistiram",
             'og_description' => 'Um botão vermelho. Sem motivo. Quantas vezes vais apertar?',
             'og_image' => asset('images/og/botao.png'),
-            'canonical' => 'https://botao.' . config('app.base_domain'),
+            'canonical' => route('botao.index'),
         ];
     }
 }

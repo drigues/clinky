@@ -18,7 +18,7 @@
   "operatingSystem": "Web",
   "offers": { "@@type": "Offer", "price": "0", "priceCurrency": "EUR" },
   "inLanguage": "pt-PT",
-  "isPartOf": { "@@type": "WebSite", "name": "Clinky.cc", "url": "https://{{ config('app.base_domain') }}" }
+  "isPartOf": { "@@type": "WebSite", "name": "Clinky.cc", "url": "{{ route('home') }}" }
 }
 </script>
 @endpush
@@ -93,7 +93,7 @@
 
 <div x-data="{
         get shareText() { return Alpine.store('nome').analise ? 'Descobri que \'' + Alpine.store('nome').nomeAnalisado + '\' significa: ' + Alpine.store('nome').analise + '\n\n🧬 Descobre o teu em:' : '' },
-        shareUrl: 'https://nome.{{ config('app.base_domain') }}',
+        shareUrl: '{{ route('nome.index') }}',
         canShare: typeof navigator.share !== 'undefined',
         copied: false,
         track(platform) {
@@ -143,7 +143,7 @@ document.addEventListener('alpine:init', () => {
             this.analise = ''
             this.erro = ''
             try {
-                const res = await fetch('/analisar', {
+                const res = await fetch('{{ route('nome.analisar') }}', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

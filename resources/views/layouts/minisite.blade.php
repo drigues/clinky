@@ -40,7 +40,7 @@
 <body class="bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 antialiased">
 
     <div class="fixed top-4 left-4 z-50">
-        <a href="https://{{ config('app.base_domain') }}"
+        <a href="{{ route('home') }}"
            class="text-xs text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300 flex items-center gap-1 transition-colors">
             ← clinky.cc
         </a>

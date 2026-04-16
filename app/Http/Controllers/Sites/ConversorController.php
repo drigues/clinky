@@ -78,7 +78,7 @@ class ConversorController extends Controller
             'og_title' => '🔁 Bicha em PT = Fila em BR. Descobre mais!',
             'og_description' => 'O dicionário divertido das diferenças entre português de Portugal e do Brasil.',
             'og_image' => asset('images/og/conversor.png'),
-            'canonical' => 'https://conversor.' . config('app.base_domain'),
+            'canonical' => route('conversor.index'),
         ];
     }
 }

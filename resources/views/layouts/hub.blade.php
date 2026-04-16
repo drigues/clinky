@@ -24,6 +24,11 @@
     <meta name="twitter:description" content="@yield('og_description', 'Descobre ferramentas absurdas, divertidas e 100% partilháveis.')">
     <meta name="twitter:image" content="@yield('og_image', asset('images/og/default.png'))">
 
+    {{-- Inter font --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
     @if(config('services.fathom.site_id'))
     <script src="https://cdn.usefathom.com/script.js"
             data-site="{{ config('services.fathom.site_id') }}"
@@ -36,16 +41,16 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('head')
 </head>
-<body class="bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 antialiased">
+<body class="bg-[#0a0a0a] text-zinc-100 antialiased">
 
     <main class="min-h-screen">
         @yield('content')
     </main>
 
-    <footer class="border-t border-zinc-100 dark:border-zinc-800 py-8 text-center text-xs text-zinc-400">
-        <a href="{{ route('privacidade') }}" class="hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors">Privacidade</a>
+    <footer class="py-8 text-center text-xs text-zinc-600">
+        <a href="{{ route('privacidade') }}" class="hover:text-zinc-400 transition-colors">Privacidade</a>
         <span class="mx-2">·</span>
-        <span>Clinky.cc © {{ date('Y') }}</span>
+        <span>Clinky.cc &copy; {{ date('Y') }}</span>
     </footer>
 
     @stack('scripts')

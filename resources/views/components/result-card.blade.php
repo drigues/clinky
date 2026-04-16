@@ -19,6 +19,6 @@
     @endif
 
     <div class="mt-4 pt-4 border-t border-zinc-100 dark:border-zinc-800">
-        <a href="https://{{ config('app.base_domain') }}" class="text-xs text-zinc-400 hover:text-zinc-500">clinky.cc</a>
+        <a href="{{ route('home') }}" class="text-xs text-zinc-400 hover:text-zinc-500">clinky.cc</a>
     </div>
 </div>

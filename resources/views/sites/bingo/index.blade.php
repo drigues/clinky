@@ -18,7 +18,7 @@
   "operatingSystem": "Web",
   "offers": { "@@type": "Offer", "price": "0", "priceCurrency": "EUR" },
   "inLanguage": "pt-PT",
-  "isPartOf": { "@@type": "WebSite", "name": "Clinky.cc", "url": "https://{{ config('app.base_domain') }}" }
+  "isPartOf": { "@@type": "WebSite", "name": "Clinky.cc", "url": "{{ route('home') }}" }
 }
 </script>
 @endpush
@@ -89,7 +89,7 @@
             if (t >= 10) return 'Fiz ' + t + '/25 no Bingo do Imigrante! Ainda estou a integrar 😅';
             return 'Fiz ' + t + '/25 no Bingo do Imigrante! Acabei de chegar 🇧🇷';
         },
-        shareUrl: 'https://bingo.{{ config('app.base_domain') }}',
+        shareUrl: '{{ route('bingo.index') }}',
         canShare: typeof navigator.share !== 'undefined',
         copied: false,
         track(platform) {

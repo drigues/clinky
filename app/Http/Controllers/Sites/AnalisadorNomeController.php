@@ -61,7 +61,7 @@ class AnalisadorNomeController extends Controller
             'og_title' => '🧬 Descobri o que o meu nome diz sobre mim',
             'og_description' => 'Análise de nome com IA. 100% inventada, surpreendentemente precisa.',
             'og_image' => asset('images/og/nome.png'),
-            'canonical' => 'https://nome.' . config('app.base_domain'),
+            'canonical' => route('nome.index'),
         ];
     }
 }

@@ -18,7 +18,7 @@
   "operatingSystem": "Web",
   "offers": { "@@type": "Offer", "price": "0", "priceCurrency": "EUR" },
   "inLanguage": "pt-PT",
-  "isPartOf": { "@@type": "WebSite", "name": "Clinky.cc", "url": "https://{{ config('app.base_domain') }}" }
+  "isPartOf": { "@@type": "WebSite", "name": "Clinky.cc", "url": "{{ route('home') }}" }
 }
 </script>
 @endpush
@@ -66,7 +66,7 @@
 </div>
 
 <div x-data="{
-        shareUrl: 'https://botao.{{ config('app.base_domain') }}',
+        shareUrl: '{{ route('botao.index') }}',
         shareText: 'Já apertei o botão. Quantas vezes vais aguentar sem apertar?\n\n🔴',
         canShare: typeof navigator.share !== 'undefined',
         copied: false,
@@ -127,7 +127,7 @@ document.addEventListener('alpine:init', () => {
         init() {
             this.pollInterval = setInterval(() => {
                 if (document.visibilityState === 'visible') {
-                    fetch('/total').then(r => r.json()).then(d => { this.total = d.total }).catch(() => {})
+                    fetch('{{ route('botao.total') }}').then(r => r.json()).then(d => { this.total = d.total }).catch(() => {})
                 }
             }, 10000)
         },
@@ -137,7 +137,7 @@ document.addEventListener('alpine:init', () => {
         async pressionar() {
             this.loading = true
             try {
-                const res = await fetch('/pressionar', {
+                const res = await fetch('{{ route('botao.pressionar') }}', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
