@@ -1,3 +1,379 @@
+# uidesign-v3.md — Homepage data-driven (config-based)
+
+Lê `CLAUDE.md`, `PROMPTS/uidesign-v2.md`.
+
+**Problema da v2:** os 9 cards estavam hardcoded no Blade. Adicionar site novo obrigava a editar HTML. Não escala para os 11 novos mini-sites psicológicos já criados (bolhas, progresso, nada, proibido, decisao, oraculo, panico, tempo, lista, conquistas, ouviste).
+
+**Solução v3:** mover a lista de sites para `config/clinky.php`. O Blade faz loop genérico. Adicionar um mini-site novo = uma entrada no array de config. Zero alterações ao Blade ou CSS.
+
+---
+
+## Arquitectura
+
+```
+config/clinky.php               ← SOURCE OF TRUTH (edita aqui para adicionar sites)
+    ↓
+HomeController@index            ← lê config, filtra live:true, separa featured
+    ↓
+resources/views/hub/home.blade.php   ← loop genérico com @switch para decorações
+```
+
+### Esquema de cada site no config
+
+```php
+[
+    'slug'        => 'bolhas',           // obrigatório — usado em route() e URL
+    'title'       => 'Rebenta as Bolhas', // obrigatório
+    'emoji'       => '🫧',               // obrigatório — ícone principal
+    'desc'        => 'Não consegues parar.', // obrigatório — 1-2 frases curtas
+    'bg'          => '#06B6D4',          // cor de fundo (hex ou gradient CSS)
+    'text'        => 'light',            // 'light' (texto branco) ou 'dark' (texto preto, para fundos claros)
+    'size'        => 'sm',               // 'sm' | 'md' | 'lg' | 'banner' — tamanho no grid desktop
+    'category'    => 'Sensorial',        // label pequena no card ("Sensorial · 10")
+    'tag'         => null,               // null ou string ('TOP', 'EM ALTA', 'PT / BR')
+    'tag_style'   => null,               // null ou 'ghost' (fundo escuro translúcido)
+    'decoration'  => 'bubbles',          // null | 'pulse-ball' | 'stars' | 'mini-grid' | 'flags' | 'bubbles' | 'progress' | 'void'
+    'ghost_emoji' => null,               // null usa $emoji; senão emoji alternativo gigante no fundo
+    'live'        => true,               // false oculta da homepage
+    'featured'    => false,              // apenas UM site pode ter featured: true (fica ao lado do hero)
+],
+```
+
+### Tamanhos (spans no desktop 12-col)
+
+| Valor | Desktop | Ratio | Uso |
+|---|---|---|---|
+| `sm` | 3 cols | 1:1 | Padrão. 4 por linha. |
+| `md` | 4 cols | 1:1 | Destaque médio. 3 por linha (com sm e lg). |
+| `lg` | 5 cols | 5:4 | Destaque landscape. Ideal para cards com mais texto. |
+| `banner` | 12 cols | landscape | Full width, rematador. Usar 1 no fim. |
+
+### Padrão de preenchimento (rows sempre = 12 cols)
+
+Para N sites após o featured, usa este padrão de tamanhos para que cada linha some 12:
+
+```
+Linha: sm + sm + sm + sm       = 3+3+3+3 = 12 (4 cards)
+Linha: md + lg + sm            = 4+5+3 = 12 (3 cards)
+Linha: lg + md + sm            = 5+4+3 = 12 (3 cards)
+Linha: banner                  = 12 (1 card)
+```
+
+Podes misturar à vontade desde que cada linha some 12. O Blade não valida — confia no config.
+
+---
+
+## Tasks
+
+### 1. Criar `config/clinky.php`
+
+Cria o ficheiro com todos os 20 mini-sites:
+
+```php
+<?php
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Clinky.cc — Registo de mini-sites
+    |--------------------------------------------------------------------------
+    |
+    | Fonte única de verdade para a homepage. Adicionar site = adicionar entrada.
+    | A homepage lê este array via HomeController e renderiza genericamente.
+    |
+    | Campos obrigatórios: slug, title, emoji, desc, bg, text, size, live
+    | Campos opcionais: category, tag, tag_style, decoration, ghost_emoji, featured
+    |
+    | Apenas UM site pode ter 'featured' => true (fica destacado ao lado do hero).
+    | Cada linha no desktop soma 12 colunas: sm=3, md=4, lg=5, banner=12.
+    |
+    */
+
+    'sites' => [
+
+        // ───────── FEATURED (destacado ao lado do hero) ─────────
+        [
+            'slug'       => 'desculpometro',
+            'title'      => 'Desculpómetro',
+            'emoji'      => '😅',
+            'desc'       => 'Gera a desculpa perfeita em 1 segundo. Com IA, criatividade e zero responsabilidade.',
+            'bg'         => '#FF5722',
+            'text'       => 'light',
+            'size'       => 'featured',   // usa o featured-card styling
+            'category'   => 'IA',
+            'tag'        => 'TOP',
+            'live'       => true,
+            'featured'   => true,
+        ],
+
+        // ───────── ROW 2 · 4 × sm = 12 ─────────
+        [
+            'slug'        => 'botao',
+            'title'       => 'Aperta o Botão',
+            'emoji'       => '🔴',
+            'desc'        => '1M+ apertaram.',
+            'bg'          => 'radial-gradient(circle at 50% 55%, #E63946 0%, #B91C2C 85%)',
+            'text'        => 'light',
+            'size'        => 'sm',
+            'category'    => 'Experiência',
+            'tag'         => 'EM ALTA',
+            'tag_style'   => 'ghost',
+            'decoration'  => 'pulse-ball',
+            'live'        => true,
+        ],
+        [
+            'slug'     => 'nomeador',
+            'title'    => 'Nomeador de Grupos',
+            'emoji'    => '💬',
+            'desc'     => 'Chega de "Família 🏠".',
+            'bg'       => '#FF3E8A',
+            'text'     => 'light',
+            'size'     => 'sm',
+            'category' => 'WhatsApp',
+            'live'     => true,
+        ],
+        [
+            'slug'        => 'horoscopo',
+            'title'       => 'Horóscopo Inútil',
+            'emoji'       => '🔮',
+            'desc'        => '100% inventado.',
+            'bg'          => '#7C3AED',
+            'text'        => 'light',
+            'size'        => 'sm',
+            'category'    => 'Pseudo',
+            'decoration'  => 'stars',
+            'live'        => true,
+        ],
+        [
+            'slug'     => 'nome',
+            'title'    => 'Analisador de Nome',
+            'emoji'    => '🧬',
+            'desc'     => '73% de "ciência".',
+            'bg'       => '#14B8A6',
+            'text'     => 'light',
+            'size'     => 'sm',
+            'category' => 'IA',
+            'live'     => true,
+        ],
+
+        // ───────── ROW 3 · md + lg + sm = 12 ─────────
+        [
+            'slug'        => 'bingo',
+            'title'       => 'Bingo do Imigrante',
+            'emoji'       => '🎯',
+            'desc'        => 'Quantas já te aconteceram em Portugal?',
+            'bg'          => '#FBBF24',
+            'text'        => 'dark',
+            'size'        => 'md',
+            'category'    => 'Imigrante',
+            'tag'         => 'PT / BR',
+            'decoration'  => 'mini-grid',
+            'live'        => true,
+        ],
+        [
+            'slug'        => 'conversor',
+            'title'       => 'Conversor PT ↔ BR',
+            'emoji'       => '🔁',
+            'desc'        => 'Bicha ou fila? Autocarro ou ônibus? O guia definitivo.',
+            'bg'          => '#2563EB',
+            'text'        => 'light',
+            'size'        => 'lg',
+            'category'    => 'Língua',
+            'tag'         => 'PT / BR',
+            'tag_style'   => 'ghost',
+            'decoration'  => 'flags',
+            'ghost_emoji' => '🇵🇹',
+            'live'        => true,
+        ],
+        [
+            'slug'     => 'quiz',
+            'title'    => 'Sou mais BR ou PT?',
+            'emoji'    => '🤔',
+            'desc'     => '5 perguntas.',
+            'bg'       => '#84CC16',
+            'text'     => 'dark',
+            'size'     => 'sm',
+            'category' => 'Quiz',
+            'tag'      => 'PT / BR',
+            'live'     => true,
+        ],
+
+        // ───────── ROW 4 · 4 × sm = 12 ─────────
+        [
+            'slug'     => 'corporativo',
+            'title'    => 'Tradutor Corporativo',
+            'emoji'    => '💼',
+            'desc'     => 'Traduz o jargão.',
+            'bg'       => '#0F172A',
+            'text'     => 'light',
+            'size'     => 'sm',
+            'category' => 'Escritório',
+            'live'     => true,
+        ],
+        [
+            'slug'        => 'bolhas',
+            'title'       => 'Rebenta as Bolhas',
+            'emoji'       => '🫧',
+            'desc'        => 'Não consegues parar.',
+            'bg'          => '#06B6D4',
+            'text'        => 'light',
+            'size'        => 'sm',
+            'category'    => 'Sensorial',
+            'decoration'  => 'bubbles',
+            'live'        => true,
+        ],
+        [
+            'slug'        => 'progresso',
+            'title'       => 'Progresso da Vida',
+            'emoji'       => '⏳',
+            'desc'        => 'Quanto já passou?',
+            'bg'          => '#18181B',
+            'text'        => 'light',
+            'size'        => 'sm',
+            'category'    => 'Closure',
+            'decoration'  => 'progress',
+            'live'        => true,
+        ],
+        [
+            'slug'        => 'nada',
+            'title'       => 'Nada',
+            'emoji'       => '·',
+            'desc'        => 'Literalmente nada.',
+            'bg'          => '#0A0A0A',
+            'text'        => 'light',
+            'size'        => 'sm',
+            'category'    => 'Curiosidade',
+            'decoration'  => 'void',
+            'live'        => true,
+        ],
+
+        // ───────── ROW 5 · lg + md + sm = 12 ─────────
+        [
+            'slug'     => 'decisao',
+            'title'    => 'A Decisão Impossível',
+            'emoji'    => '🤯',
+            'desc'     => 'Duas opções. Nenhuma é boa. O que diz isso sobre ti?',
+            'bg'       => '#4F46E5',
+            'text'     => 'light',
+            'size'     => 'lg',
+            'category' => 'Paralisia',
+            'live'     => true,
+        ],
+        [
+            'slug'     => 'oraculo',
+            'title'    => 'O Oráculo',
+            'emoji'    => '👁️',
+            'desc'     => 'Pergunta. A resposta já existe.',
+            'bg'       => '#581C87',
+            'text'     => 'light',
+            'size'     => 'md',
+            'category' => 'Barnum',
+            'live'     => true,
+        ],
+        [
+            'slug'      => 'proibido',
+            'title'     => 'Botão Proibido',
+            'emoji'     => '🚫',
+            'desc'      => 'Não carregues.',
+            'bg'        => '#881337',
+            'text'      => 'light',
+            'size'      => 'sm',
+            'category'  => 'Reactance',
+            'live'      => true,
+        ],
+
+        // ───────── ROW 6 · 4 × sm = 12 ─────────
+        [
+            'slug'     => 'panico',
+            'title'    => 'Modo Pânico',
+            'emoji'    => '🚨',
+            'desc'     => 'Activa a crise.',
+            'bg'       => '#DC2626',
+            'text'     => 'light',
+            'size'     => 'sm',
+            'category' => 'Urgência',
+            'live'     => true,
+        ],
+        [
+            'slug'     => 'tempo',
+            'title'    => 'Quanto Tempo Perdeste?',
+            'emoji'    => '⏰',
+            'desc'     => 'Vais querer saber.',
+            'bg'       => '#D97706',
+            'text'     => 'light',
+            'size'     => 'sm',
+            'category' => 'Culpa',
+            'live'     => true,
+        ],
+        [
+            'slug'     => 'lista',
+            'title'    => 'Coisas Que Nunca Vais Fazer',
+            'emoji'    => '✅',
+            'desc'     => 'A lista honesta.',
+            'bg'       => '#DB2777',
+            'text'     => 'light',
+            'size'     => 'sm',
+            'category' => 'Identificação',
+            'live'     => true,
+        ],
+        [
+            'slug'     => 'conquistas',
+            'title'    => 'Conquistas do Nada',
+            'emoji'    => '🏆',
+            'desc'     => 'Medalhas por zero.',
+            'bg'       => '#CA8A04',
+            'text'     => 'dark',
+            'size'     => 'sm',
+            'category' => 'Completionism',
+            'live'     => true,
+        ],
+
+        // ───────── ROW 7 · banner = 12 ─────────
+        [
+            'slug'     => 'ouviste',
+            'title'    => 'Já Ouviste Isto?',
+            'emoji'    => '🎧',
+            'desc'     => 'Sons que nunca ouviste mas conheces. Descrições geradas por IA, inexplicavelmente precisas.',
+            'bg'       => '#0369A1',
+            'text'     => 'light',
+            'size'     => 'banner',
+            'category' => 'Sons',
+            'live'     => true,
+        ],
+
+    ],
+
+];
+```
+
+### 2. Simplificar `HomeController.php`
+
+```php
+<?php
+
+namespace App\Http\Controllers\Hub;
+
+use App\Http\Controllers\Controller;
+
+class HomeController extends Controller
+{
+    public function index()
+    {
+        $sites    = collect(config('clinky.sites'))->where('live', true)->values();
+        $featured = $sites->firstWhere('featured', true);
+        $others   = $sites->reject(fn ($s) => ($s['featured'] ?? false) === true)->values();
+
+        return view('hub.home', compact('featured', 'others'));
+    }
+}
+```
+
+### 3. Substituir `resources/views/hub/home.blade.php`
+
+Substitui o ficheiro integral por:
+
+```blade
 @extends('layouts.hub')
 
 @section('content')
@@ -44,7 +420,7 @@
         {{-- OTHERS — loop genérico --}}
         @foreach($others as $i => $site)
             @php
-                $n        = $i + ($featured ? 2 : 1);
+                $n        = $i + ($featured ? 2 : 1); // numeração global começando em 01 ou 02
                 $classes  = 'card sz-' . ($site['size'] ?? 'sm');
                 if (($site['text'] ?? 'light') === 'dark') $classes .= ' on-light';
             @endphp
@@ -91,7 +467,7 @@
                         <div class="deco-progress"></div>
                         @break
                     @case('void')
-                        {{-- intencionalmente vazio --}}
+                        {{-- intencionalmente vazio (é o ponto do "nada") --}}
                         @break
                 @endswitch
 
@@ -439,3 +815,107 @@ body::before {
 .bento > *:nth-child(n+11) { animation-delay: 0.42s; }
 </style>
 @endpush
+```
+
+### 4. Confirmar que todas as rotas existem
+
+Antes de carregar a homepage, correr:
+
+```bash
+php artisan route:list | grep -E "(desculpometro|botao|nomeador|horoscopo|nome|bingo|conversor|quiz|corporativo|bolhas|progresso|nada|proibido|decisao|oraculo|panico|tempo|lista|conquistas|ouviste)\.index"
+```
+
+Deve mostrar 20 linhas, uma para cada site. Se alguma faltar, a view vai dar erro em `route('slug.index')`. Antes de avançar, **mostrar quais faltam e perguntar** se deve:
+- (a) Marcar esse site como `'live' => false` temporariamente
+- (b) Parar para que o utilizador crie a route primeiro
+
+### 5. Limpar cache
+
+```bash
+php artisan config:clear
+php artisan route:clear
+php artisan view:clear
+```
+
+### 6. Testar
+
+```bash
+curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8000
+```
+
+Deve devolver `200`. Depois abrir no browser e confirmar:
+- **Mobile 375px:** 20 cards 1:1 em 2 colunas (10 linhas de 2 cards), hero e featured full width no topo
+- **Tablet 900px:** 2 cards por linha (10 linhas), banner do ouviste full width
+- **Desktop 1440px:**
+  - Linha 1: Hero (7) + Featured Desculpómetro (5) = 12
+  - Linha 2: 4 squares sm (3+3+3+3) = 12
+  - Linha 3: md + lg + sm (4+5+3) = 12
+  - Linha 4: 4 squares sm (3+3+3+3) = 12
+  - Linha 5: lg + md + sm (5+4+3) = 12
+  - Linha 6: 4 squares sm (3+3+3+3) = 12
+  - Linha 7: banner (12) = 12
+
+### 7. Actualizar CLAUDE.md
+
+Na secção "Mini-sites — referência rápida", marcar todos os 20 como `[x]` na coluna Status (assumindo que os 11 novos já foram construídos; caso algum ainda esteja WIP, manter `[ ]`). Adicionar nota:
+
+```
+Adicionar novo mini-site:
+1. Criar o mini-site seguindo PROMPTS/TEMPLATE-new-minisite.md
+2. Adicionar uma entrada em config/clinky.php respeitando o padrão de tamanhos (soma 12 por linha)
+3. O site aparece automaticamente na homepage após `php artisan config:clear`
+```
+
+### 8. ✅ Concluir
+
+Se tudo funciona, apagar backup da v2 (`home.blade.php.v1.bak` e `.v2.bak` se existirem).
+
+---
+
+## Como adicionar um novo mini-site no futuro
+
+1. Criar o mini-site (controller, view, route) como sempre
+2. Abrir `config/clinky.php`
+3. Adicionar entrada no array `sites`:
+   ```php
+   [
+       'slug'     => 'novo',
+       'title'    => 'Novo Mini-Site',
+       'emoji'    => '🎲',
+       'desc'     => 'Descrição curta.',
+       'bg'       => '#3B82F6',
+       'text'     => 'light',
+       'size'     => 'sm',
+       'category' => 'Categoria',
+       'live'     => true,
+   ],
+   ```
+4. Se quiser manter o padrão de 12 cols por linha, ajustar o `size` de sites vizinhos. Não é obrigatório — o CSS Grid tolera linhas incompletas.
+5. Correr `php artisan config:clear`
+6. Recarregar a homepage. O novo site aparece.
+
+---
+
+## Adicionar uma decoração nova (opcional, para o futuro)
+
+Se quiseres decoração específica para um site (ex: "clock" com ponteiros rotativos para o `tempo`):
+
+1. Em `home.blade.php`, adicionar `@case('clock')` ao `@switch($site['decoration'])` com o HTML da decoração
+2. Em `@push('styles')`, adicionar o CSS `.deco-clock { ... }`
+3. Em `config/clinky.php`, definir `'decoration' => 'clock'` no site que a usa
+
+As decorações actuais já suportadas: `pulse-ball`, `stars`, `mini-grid`, `flags`, `bubbles`, `progress`, `void`.
+
+---
+
+## Notas
+
+- **`config/clinky.php` é a fonte única de verdade.** Toda a alteração à homepage passa por aqui.
+- **`text: 'dark'`** serve para cards com fundo claro (amarelo, lima, dourado) onde texto preto tem melhor contraste.
+- **`ghost_emoji`** permite ter um emoji diferente no fundo (ex: conversor tem emoji 🔁 no ícone mas 🇵🇹 gigante no fundo).
+- **`featured: true`** é exclusivo — apenas UM site deve ter. Se houver mais de um, o primeiro ganha.
+- **`size: 'featured'`** no desculpometro é ignorado pelo CSS (o Blade renderiza via `featured-card`, não `.card.sz-featured`). Está só por documentação.
+- **Rows não precisam somar 12.** O CSS Grid tolera gaps. Mas somar 12 fica mais bonito.
+- **Se um site não tiver `route('slug.index')`**, a view crasha. Marcar como `live: false` temporariamente para continuar.
+
+Se algo falhar em qualquer passo, **para e pergunta antes de remendar**.

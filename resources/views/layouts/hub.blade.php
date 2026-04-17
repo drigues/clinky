@@ -24,10 +24,10 @@
     <meta name="twitter:description" content="@yield('og_description', 'Descobre ferramentas absurdas, divertidas e 100% partilháveis.')">
     <meta name="twitter:image" content="@yield('og_image', asset('images/og/default.png'))">
 
-    {{-- Inter font --}}
+    {{-- Fonts: Bricolage Grotesque (display), Figtree (body), JetBrains Mono (labels) --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
     @if(config('services.fathom.site_id'))
     <script src="https://cdn.usefathom.com/script.js"
@@ -41,6 +41,7 @@
     <x-google-analytics />
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @stack('styles')
     @stack('head')
 </head>
 <body class="bg-[#0a0a0a] text-zinc-100 antialiased">

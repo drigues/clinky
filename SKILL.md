@@ -1,7 +1,7 @@
 # Clinky.cc — Skill para Claude Code
 
 ## O que é o Clinky.cc
-Clinky.cc é um hub de mini-sites virais, inúteis e partilháveis via WhatsApp e redes sociais. Cada mini-site vive num subdomínio próprio (ex: `desculpometro.clinky.cc`) e é construído em Laravel 12 com Tailwind CSS e Alpine.js.
+Clinky.cc é um hub de mini-sites que exploram padrões cognitivos virais — compulsão, closure, variable reward, efeito Barnum, completionism. Cada mini-site é desenhado para ser difícil de largar e fácil de partilhar. É construído em Laravel 12 com Tailwind CSS e Alpine.js.
 
 **Antes de qualquer tarefa, lê os ficheiros de referência relevantes:**
 - `REFERENCES/ARCHITECTURE.md` — estrutura do projeto, routing, deploy

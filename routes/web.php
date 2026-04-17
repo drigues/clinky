@@ -13,6 +13,10 @@ use App\Http\Controllers\Sites\CorporativoController;
 use App\Http\Controllers\Sites\DesculpometroController;
 use App\Http\Controllers\Sites\HoroscopoController;
 use App\Http\Controllers\Sites\NomeadorController;
+use App\Http\Controllers\Sites\BolhasController;
+use App\Http\Controllers\Sites\NadaController;
+use App\Http\Controllers\Sites\ProgressoController;
+use App\Http\Controllers\Sites\ProibidoController;
 use App\Http\Controllers\Sites\QuizController;
 use Illuminate\Support\Facades\Route;
 
@@ -72,4 +76,26 @@ Route::prefix('quiz')->name('quiz.')->group(function () {
 Route::prefix('corporativo')->name('corporativo.')->group(function () {
     Route::get('/', [CorporativoController::class, 'index'])->name('index');
     Route::post('/traduzir', [CorporativoController::class, 'traduzir'])->name('traduzir')->middleware('throttle:10,1');
+});
+
+// Rebenta as Bolhas
+Route::prefix('bolhas')->name('bolhas.')->group(function () {
+    Route::get('/', [BolhasController::class, 'index'])->name('index');
+});
+
+// Barra de Progresso da Vida
+Route::prefix('progresso')->name('progresso.')->group(function () {
+    Route::get('/', [ProgressoController::class, 'index'])->name('index');
+});
+
+// Nada
+Route::prefix('nada')->name('nada.')->group(function () {
+    Route::get('/', [NadaController::class, 'index'])->name('index');
+    Route::get('/viewers', [NadaController::class, 'viewers'])->name('viewers');
+});
+
+// Botão Proibido
+Route::prefix('proibido')->name('proibido.')->group(function () {
+    Route::get('/', [ProibidoController::class, 'index'])->name('index');
+    Route::post('/carregar', [ProibidoController::class, 'carregar'])->name('carregar')->middleware('throttle:60,1');
 });
