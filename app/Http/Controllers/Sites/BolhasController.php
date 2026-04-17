@@ -19,8 +19,8 @@ class BolhasController extends Controller
     private function seo(): array
     {
         return [
-            'title'          => 'Rebenta as Bolhas — Satisfação Garantida ou Dinheiro de Volta',
-            'description'    => 'Bolhas infinitas para rebentar. Sem propósito. Sem fim. Completamente viciante. Não digas que não avisámos.',
+            'title'          => 'Rebenta as Bolhas — Satisfação Garantida',
+            'description'    => 'Bolhas infinitas para rebentar no browser. Sem propósito. Sem fim. Completamente viciante. Não digas que não avisámos antes de começares.',
             'og_title'       => '🫧 Rebenta as Bolhas — impossível parar',
             'og_description' => 'Já rebentaste 0 bolhas. Daqui a 5 minutos esse número vai ser muito maior.',
             'og_image'       => asset('images/og/bolhas.png'),

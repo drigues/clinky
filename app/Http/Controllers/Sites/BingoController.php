@@ -48,8 +48,8 @@ class BingoController extends Controller
     private function seo(): array
     {
         return [
-            'title' => 'Bingo do Imigrante Brasileiro em Portugal — Quantos Já Viveste?',
-            'description' => 'A cartela que todo brasileiro em Portugal vai reconhecer. Marca os quadrados e descobre o teu nível de integração.',
+            'title' => 'Bingo do Imigrante — Quantas Já Viveste?',
+            'description' => 'Cartela de bingo com as situações clássicas de brasileiros em Portugal. Marca as que já viveste e descobre o teu nível de integração.',
             'og_title' => '🎯 Bingo do Imigrante — quantos já te aconteceram?',
             'og_description' => 'Já disseste "vou já" e ficaste 3 horas? Já ficaste confuso com "bicha"? Joga o Bingo!',
             'og_image' => asset('images/og/bingo.png'),

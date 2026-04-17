@@ -26,12 +26,12 @@
 @section('content')
 <div class="min-h-screen px-4 pb-32" x-data="analisadorNome()">
 
-    <x-site-header
+    <x-hero
         emoji="🧬"
         title="O que o teu nome diz?"
         tagline="Análise científica* de personalidade"
-        accentColor="teal"
-    />
+        accent="#14b8a6"
+        eyebrow="IA · 05" />
 
     <form @submit.prevent="analisar" class="max-w-sm mx-auto space-y-4">
         <div>
@@ -62,11 +62,11 @@
                 <span class="text-2xl">🧬</span>
                 <div>
                     <p class="text-sm font-semibold text-zinc-900 dark:text-zinc-100" x-text="'Análise de ' + nomeAnalisado"></p>
-                    <p class="text-[10px] text-zinc-400 dark:text-zinc-500">Relatório #<span x-text="Math.floor(Math.random() * 9000 + 1000)"></span></p>
+                    <p class="text-[10px] text-zinc-400 dark:text-white/60">Relatório #<span x-text="Math.floor(Math.random() * 9000 + 1000)"></span></p>
                 </div>
             </div>
             <p class="text-base leading-relaxed text-zinc-900 dark:text-zinc-100" x-text="analise"></p>
-            <p class="mt-4 text-[10px] text-zinc-400 dark:text-zinc-500 italic">
+            <p class="mt-4 text-[10px] text-zinc-400 dark:text-white/60 italic">
                 * Análise 100% inventada. Surpreendentemente precisa.
             </p>
         </div>

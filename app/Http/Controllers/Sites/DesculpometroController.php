@@ -56,8 +56,8 @@ class DesculpometroController extends Controller
     private function seo(): array
     {
         return [
-            'title' => 'Desculpómetro — Gera a Desculpa Perfeita em 1 Segundo',
-            'description' => 'Gerador de desculpas absurdas com IA. Ideal para quando precisas de uma razão épica para faltar, cancelar ou desaparecer.',
+            'title' => 'Desculpómetro — A Desculpa Perfeita por IA',
+            'description' => 'Gerador de desculpas com IA — realistas, criativas, épicas ou completamente absurdas. Ideal para faltar, cancelar ou desaparecer sem culpa.',
             'og_title' => '😅 Desculpómetro — a culpa foi do gato filosófico',
             'og_description' => 'Gera a tua desculpa perfeita agora. Grátis, anónimo, partilhável.',
             'og_image' => asset('images/og/desculpometro.png'),

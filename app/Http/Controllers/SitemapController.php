@@ -19,6 +19,15 @@ class SitemapController extends Controller
             ['url' => route('conversor.index'), 'changefreq' => 'monthly', 'priority' => '0.7'],
             ['url' => route('quiz.index'), 'changefreq' => 'monthly', 'priority' => '0.7'],
             ['url' => route('corporativo.index'), 'changefreq' => 'monthly', 'priority' => '0.7'],
+            ['url' => route('bolhas.index'), 'changefreq' => 'monthly', 'priority' => '0.7'],
+            ['url' => route('progresso.index'), 'changefreq' => 'monthly', 'priority' => '0.7'],
+            ['url' => route('nada.index'), 'changefreq' => 'monthly', 'priority' => '0.7'],
+            ['url' => route('proibido.index'), 'changefreq' => 'monthly', 'priority' => '0.7'],
+            ['url' => route('decisao.index'), 'changefreq' => 'monthly', 'priority' => '0.8'],
+            ['url' => route('oraculo.index'), 'changefreq' => 'monthly', 'priority' => '0.8'],
+            ['url' => route('lista.index'), 'changefreq' => 'monthly', 'priority' => '0.7'],
+            ['url' => route('panico.index'), 'changefreq' => 'monthly', 'priority' => '0.8'],
+            ['url' => route('conquistas.index'), 'changefreq' => 'monthly', 'priority' => '0.7'],
         ];
 
         $content = view('hub.sitemap', compact('sites'))->render();

@@ -73,8 +73,8 @@ class ConversorController extends Controller
     private function seo(): array
     {
         return [
-            'title' => 'Conversor PT ↔ BR — As Palavras Que Nos Separam (e Unem)',
-            'description' => 'Bicha ou fila? Autocarro ou ônibus? Pequeno-almoço ou café da manhã? O guia definitivo das diferenças.',
+            'title' => 'Conversor PT ↔ BR — O Dicionário Divertido',
+            'description' => 'Bicha ou fila? Autocarro ou ônibus? Pequeno-almoço ou café da manhã? O dicionário interactivo PT ↔ BR com 50+ palavras e exemplos.',
             'og_title' => '🔁 Bicha em PT = Fila em BR. Descobre mais!',
             'og_description' => 'O dicionário divertido das diferenças entre português de Portugal e do Brasil.',
             'og_image' => asset('images/og/conversor.png'),

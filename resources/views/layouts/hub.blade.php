@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>@yield('title', 'Clinky.cc — Mini-sites virais, inúteis e partilháveis')</title>
-    <meta name="description" content="@yield('description', 'Uma colecção de mini-sites absurdos, divertidos e feitos para partilhar no WhatsApp. Grátis, sem registo, sem dados.')">
+    <title>@yield('title', 'Clinky.cc — Testa a tua resistência')</title>
+    <meta name="description" content="@yield('description', 'Uma colecção de mini-sites absurdos, divertidos e feitos para te testar. Sem registo, sem cookies, sem dados pessoais.')">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="{{ request()->url() }}">
 
     <meta property="og:type" content="website">
     <meta property="og:title" content="@yield('og_title', 'Clinky.cc — Mini-sites virais e inúteis')">
-    <meta property="og:description" content="@yield('og_description', 'Descobre ferramentas absurdas, divertidas e 100% partilháveis.')">
+    <meta property="og:description" content="@yield('og_description', 'Do not push the red button! Não consegues parar. Nem devias tentar.')">
     <meta property="og:url" content="{{ request()->url() }}">
     <meta property="og:image" content="@yield('og_image', asset('images/og/default.png'))">
     <meta property="og:image:width" content="1200">
@@ -20,8 +20,8 @@
     <meta property="og:locale" content="pt_PT">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="@yield('og_title', 'Clinky.cc — Mini-sites virais e inúteis')">
-    <meta name="twitter:description" content="@yield('og_description', 'Descobre ferramentas absurdas, divertidas e 100% partilháveis.')">
+    <meta name="twitter:title" content="@yield('og_title', 'Clinky.cc — Mini-sites que testam a tua resistência')">
+    <meta name="twitter:description" content="@yield('og_description', 'Don't push the red button! Não consegues parar. Nem devias tentar.')">
     <meta name="twitter:image" content="@yield('og_image', asset('images/og/default.png'))">
 
     {{-- Fonts: Bricolage Grotesque (display), Figtree (body), JetBrains Mono (labels) --}}

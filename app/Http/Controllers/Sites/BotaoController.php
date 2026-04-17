@@ -47,7 +47,7 @@ class BotaoController extends Controller
 
         return [
             'title' => "Aperta o Botão — Já Apertaram {$formatted} Vezes",
-            'description' => 'Um botão. Sem explicação. Sem propósito. Já apertaram milhares de vezes. Qual é a tua resistência?',
+            'description' => 'Um botão vermelho. Sem explicação. Sem propósito. Já foi apertado milhões de vezes em todo o mundo. Qual é a tua resistência?',
             'og_title' => "🔴 Aperta o Botão — {$formatted} pessoas não resistiram",
             'og_description' => 'Um botão vermelho. Sem motivo. Quantas vezes vais apertar?',
             'og_image' => asset('images/og/botao.png'),

@@ -37,7 +37,7 @@
             <h1 class="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
                 Barra de Progresso da Vida
             </h1>
-            <p class="mt-2 text-zinc-500 dark:text-zinc-400 text-sm max-w-xs mx-auto">
+            <p class="mt-2 text-zinc-500 dark:text-white/70 text-sm max-w-xs mx-auto">
                 Quanto da tua vida já passou? Não é motivacional.
             </p>
         </header>
@@ -50,7 +50,7 @@
 
                 <div class="flex gap-3">
                     <div class="flex-1">
-                        <label for="mes" class="block text-xs text-zinc-500 dark:text-zinc-400 mb-1">Mês</label>
+                        <label for="mes" class="block text-xs text-zinc-500 dark:text-white/70 mb-1">Mês</label>
                         <select id="mes" x-model="mesNascimento" required
                                 class="w-full bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-xl px-4 py-3 text-sm text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-2 focus:ring-lime-500/40">
                             <option value="" disabled selected>—</option>
@@ -70,7 +70,7 @@
                     </div>
 
                     <div class="flex-1">
-                        <label for="ano" class="block text-xs text-zinc-500 dark:text-zinc-400 mb-1">Ano</label>
+                        <label for="ano" class="block text-xs text-zinc-500 dark:text-white/70 mb-1">Ano</label>
                         <input id="ano" type="number" x-model="anoNascimento" required
                                min="1900" :max="new Date().getFullYear()"
                                placeholder="1990"
@@ -85,7 +85,7 @@
             </button>
         </form>
 
-        <p class="mt-6 text-xs text-zinc-400 dark:text-zinc-500 text-center max-w-xs">
+        <p class="mt-6 text-xs text-zinc-400 dark:text-white/60 text-center max-w-xs">
             A tua data de nascimento é calculada localmente no browser. Não é enviada a nenhum servidor.
         </p>
     </div>
@@ -99,7 +99,7 @@
 
         <header class="text-center mb-8">
             <div class="text-5xl mb-3">⏳</div>
-            <p class="text-sm text-zinc-500 dark:text-zinc-400 uppercase tracking-widest font-medium">
+            <p class="text-sm text-zinc-500 dark:text-white/70 uppercase tracking-widest font-medium">
                 A tua vida está
             </p>
         </header>
@@ -116,7 +116,7 @@
                      :style="`width: ${barraWidth}%; background: linear-gradient(90deg, #c8f135, #ff6b00)`">
                 </div>
             </div>
-            <div class="flex justify-between mt-2 text-xs text-zinc-400 dark:text-zinc-500 tabular-nums">
+            <div class="flex justify-between mt-2 text-xs text-zinc-400 dark:text-white/60 tabular-nums">
                 <span>0%</span>
                 <span>100%</span>
             </div>
@@ -124,7 +124,7 @@
 
         {{-- Detalhes --}}
         <div class="text-center mt-6 space-y-3">
-            <p class="text-sm text-zinc-500 dark:text-zinc-400"
+            <p class="text-sm text-zinc-500 dark:text-white/70"
                x-text="tempoRestante">
             </p>
 
@@ -135,12 +135,12 @@
 
         {{-- Recalcular --}}
         <button @click="reset()"
-                class="mt-8 text-xs text-zinc-400 dark:text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors underline underline-offset-4">
+                class="mt-8 text-xs text-zinc-400 dark:text-white/60 hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors underline underline-offset-4">
             Tentar outra data
         </button>
 
         {{-- Nota de rodapé --}}
-        <p class="mt-10 text-[10px] text-zinc-400 dark:text-zinc-500 text-center max-w-xs">
+        <p class="mt-10 text-[10px] text-zinc-400 dark:text-white/60 text-center max-w-xs">
             * Baseado em esperança de vida média de 79 anos. O teu resultado pode variar.
         </p>
     </div>

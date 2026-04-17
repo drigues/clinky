@@ -97,8 +97,8 @@ class CorporativoController extends Controller
     private function seo(): array
     {
         return [
-            'title' => 'Tradutor Corporativo — O Que Significam Realmente as Palavras do Escritório',
-            'description' => '"Synergize deliverables" = fazer o costume mas com slide. Descobre o que o teu chefe está mesmo a dizer.',
+            'title' => 'Tradutor Corporativo — Jargão para Português',
+            'description' => 'Traduz jargão corporativo para português real. \'Vamos alinhar\' = reunião desnecessária. Escreve o termo e recebe a tradução honesta.',
             'og_title' => '💼 "Vamos alinhar" = reunião desnecessária. Descobre mais!',
             'og_description' => 'Traduz jargão corporativo para português real. Finalmente vais perceber o que dizem nas reuniões.',
             'og_image' => asset('images/og/corporativo.png'),

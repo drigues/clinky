@@ -26,12 +26,12 @@
 @section('content')
 <div class="min-h-screen px-4 pb-32" x-data="nomeador()">
 
-    <x-site-header
+    <x-hero
         emoji="💬"
         title="Nomeador de Grupos"
         tagline="Nomes épicos para o teu WhatsApp"
-        accentColor="pink"
-    />
+        accent="#ff2d78"
+        eyebrow="WHATSAPP · 03" />
 
     <div class="max-w-sm mx-auto space-y-4">
         <div>

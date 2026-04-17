@@ -57,7 +57,7 @@ class ProibidoController extends Controller
     {
         return [
             'title'          => 'O Botão Proibido — Não Carregues',
-            'description'    => 'Há um botão. Disseram-te para não carregar. O que vais fazer?',
+            'description'    => 'Há um botão neste site. Disseram-te para não carregares. O que vais fazer? Cada clique dá um resultado diferente e inesperado.',
             'og_title'       => '🚫 Não carregues neste botão.',
             'og_description' => 'Sério. Não carregues. Por favor.',
             'og_image'       => asset('images/og/proibido.png'),

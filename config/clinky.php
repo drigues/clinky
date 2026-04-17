@@ -188,7 +188,7 @@ return [
             'text'     => 'light',
             'size'     => 'lg',
             'category' => 'Paralisia',
-            'live'     => false,
+            'live'     => true,
         ],
         [
             'slug'     => 'oraculo',
@@ -199,7 +199,7 @@ return [
             'text'     => 'light',
             'size'     => 'md',
             'category' => 'Barnum',
-            'live'     => false,
+            'live'     => true,
         ],
         [
             'slug'      => 'proibido',
@@ -223,7 +223,7 @@ return [
             'text'     => 'light',
             'size'     => 'sm',
             'category' => 'Urgência',
-            'live'     => false,
+            'live'     => true,
         ],
         [
             'slug'     => 'tempo',
@@ -245,7 +245,7 @@ return [
             'text'     => 'light',
             'size'     => 'sm',
             'category' => 'Identificação',
-            'live'     => false,
+            'live'     => true,
         ],
         [
             'slug'     => 'conquistas',
@@ -256,7 +256,7 @@ return [
             'text'     => 'dark',
             'size'     => 'sm',
             'category' => 'Completionism',
-            'live'     => false,
+            'live'     => true,
         ],
 
         // ROW 7 · banner = 12

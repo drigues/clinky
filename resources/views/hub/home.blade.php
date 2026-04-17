@@ -1,23 +1,23 @@
 @extends('layouts.hub')
 
 @section('content')
-<div class="clinky-wrap">
+<div class="clinky-wrap max-w-[1400px] px-4">
 
     <div class="clinky-nav">
         <div class="brand">
             <span class="dot"></span>
-            <span>Clinky.cc · v1</span>
+            <span>Clinky.cc</span>
         </div>
-        <div class="count">{{ $others->count() + ($featured ? 1 : 0) }} mini-sites</div>
+        <div class="count">{{ $others->count() + ($featured ? 1 : 0) }} clinky-aaabsurd-sites</div>
     </div>
 
     <div class="bento">
 
         {{-- HERO --}}
         <div class="hero-card">
-            <div class="eyebrow">Mini-sites bestas que valem a pena</div>
+            <div class="eyebrow">✦ Testa a tua resistência ✦</div>
             <h1>Clin<span class="ky">ky</span><span class="dot-accent">.cc</span></h1>
-            <p class="tagline">Sem registo. Sem cookies. Sem sentido. Mini-experiências virais, partilháveis num toque.</p>
+            <p class="tagline">Não consegues parar. Nem devias tentar.<br>Scroll. Clica. Repete.</p>
             <div class="stats">
                 <div class="stat"><span class="num">{{ str_pad($others->count() + ($featured ? 1 : 0), 2, '0', STR_PAD_LEFT) }}</span><span class="lbl">Mini-sites</span></div>
                 <div class="stat"><span class="num">0</span><span class="lbl">Cookies</span></div>
@@ -27,7 +27,7 @@
 
         {{-- FEATURED --}}
         @if($featured)
-            <a href="{{ route($featured['slug'] . '.index') }}" class="featured-card"
+            <a id="{{ $featured['slug'] }}" href="{{ route($featured['slug'] . '.index') }}" class="featured-card"
                style="background: {{ $featured['bg'] }}; color: {{ $featured['text'] === 'dark' ? '#0A0A0A' : '#fff' }};">
                 @if(!empty($featured['tag']))
                     <span class="tag" style="color: {{ $featured['bg'] }};">{{ $featured['tag'] }}</span>
@@ -49,7 +49,7 @@
                 if (($site['text'] ?? 'light') === 'dark') $classes .= ' on-light';
             @endphp
 
-            <a href="{{ route($site['slug'] . '.index') }}"
+            <a id="{{ $site['slug'] }}" href="{{ route($site['slug'] . '.index') }}"
                class="{{ $classes }}"
                style="background: {{ $site['bg'] }};">
 
@@ -121,7 +121,7 @@
         <div class="logo">Clinky<span>.cc</span></div>
         <nav>
             <a href="{{ route('privacidade') }}">Privacidade</a>
-            <a href="https://thr33.xyz" target="_blank" rel="noopener">thr33.xyz</a>
+            <span>Feito com 💚</span>
             <span>© 2026</span>
         </nav>
     </footer>
@@ -132,6 +132,9 @@
 @push('styles')
 <style>
 /* ═══════════════════════ CLINKY BENTO v3 ═══════════════════════ */
+html { scroll-behavior: smooth; }
+[id] { scroll-margin-top: 16px; }
+
 :root {
     --bg: #F0EDE3;
     --ink: #0A0A0A;

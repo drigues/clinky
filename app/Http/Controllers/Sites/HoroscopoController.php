@@ -117,8 +117,8 @@ class HoroscopoController extends Controller
         $dia = now()->locale('pt')->dayName;
 
         return [
-            'title' => 'Horóscopo Inútil — O Teu Futuro em Palavras Que Não Significam Nada',
-            'description' => "O horóscopo mais honesto do mundo. Hoje é {$dia}. As estrelas não sabem mais do que isso.",
+            'title' => 'Horóscopo Inútil — Previsões 100% Inventadas',
+            'description' => 'Horóscopo diário inútil mas estranhamente preciso. 12 signos, previsões 100% inventadas, 100% partilháveis. As estrelas encolheram os ombros.',
             'og_title' => '🔮 Horóscopo de hoje: as estrelas encolheram os ombros',
             'og_description' => 'Previsões diárias 100% inventadas. As estrelas não se responsabilizam.',
             'og_image' => asset('images/og/horoscopo.png'),

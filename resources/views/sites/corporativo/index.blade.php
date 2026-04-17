@@ -26,18 +26,18 @@
 @section('content')
 <div class="min-h-screen px-4 pb-32" x-data="corporativo()">
 
-    <x-site-header
+    <x-hero
         emoji="💼"
         title="Tradutor Corporativo"
         tagline="O que realmente querem dizer no escritório"
-        accentColor="red"
-    />
+        accent="#ff3b3b"
+        eyebrow="ESCRITÓRIO · 09" />
 
     <div class="max-w-sm mx-auto mb-6">
         <div class="flex flex-wrap gap-2 justify-center">
             @foreach(array_slice($termos, 0, 8) as $termo)
             <button @click="texto = '{{ $termo }}'; traduzir()"
-                    class="text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 px-3 py-1.5 rounded-full hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-900/20 dark:hover:text-red-400 transition-colors">
+                    class="text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-white/70 px-3 py-1.5 rounded-full hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-900/20 dark:hover:text-red-400 transition-colors">
                 {{ $termo }}
             </button>
             @endforeach
@@ -73,11 +73,11 @@
                 <span class="text-2xl">💼</span>
                 <div>
                     <p class="text-sm font-semibold text-zinc-900 dark:text-zinc-100">Tradução honesta</p>
-                    <p class="text-[10px] text-zinc-400 dark:text-zinc-500" x-text="'«' + textoTraduzido + '»'"></p>
+                    <p class="text-[10px] text-zinc-400 dark:text-white/60" x-text="'«' + textoTraduzido + '»'"></p>
                 </div>
             </div>
             <p class="text-base leading-relaxed text-zinc-900 dark:text-zinc-100" x-text="traducao"></p>
-            <p class="mt-4 text-[10px] text-zinc-400 dark:text-zinc-500 italic">
+            <p class="mt-4 text-[10px] text-zinc-400 dark:text-white/60 italic">
                 * Tradução não oficial mas surpreendentemente precisa.
             </p>
         </div>
@@ -101,7 +101,7 @@
     </div>
 
     <div class="max-w-sm mx-auto mt-10">
-        <h2 class="text-sm font-semibold text-zinc-500 dark:text-zinc-400 mb-4 text-center">Dicionário de sobrevivência</h2>
+        <h2 class="text-sm font-semibold text-zinc-500 dark:text-white/70 mb-4 text-center">Dicionário de sobrevivência</h2>
         <div class="space-y-2">
             @foreach($termos as $termo)
             <button @click="texto = '{{ $termo }}'; traduzir()"

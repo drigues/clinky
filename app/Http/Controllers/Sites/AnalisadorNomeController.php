@@ -56,8 +56,8 @@ class AnalisadorNomeController extends Controller
     private function seo(): array
     {
         return [
-            'title' => 'O Que o Teu Nome Diz? — Análise Científica* de Personalidade',
-            'description' => 'Descobre o que o teu nome revela sobre ti. *Totalmente inventado, mas surpreendentemente preciso.',
+            'title' => 'Analisador de Nome — O Que o Teu Nome Diz?',
+            'description' => 'Escreve o teu nome e descobre o que ele revela sobre ti. Análise científica* por IA — 73% caos, 27% potencial. *Totalmente inventada.',
             'og_title' => '🧬 Descobri o que o meu nome diz sobre mim',
             'og_description' => 'Análise de nome com IA. 100% inventada, surpreendentemente precisa.',
             'og_image' => asset('images/og/nome.png'),

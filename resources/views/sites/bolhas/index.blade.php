@@ -32,17 +32,17 @@
         <h1 class="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
             Rebenta as Bolhas
         </h1>
-        <p class="mt-2 text-zinc-500 dark:text-zinc-400 text-sm max-w-xs mx-auto">
+        <p class="mt-2 text-zinc-500 dark:text-white/70 text-sm max-w-xs mx-auto">
             Sem propósito. Sem fim. Completamente viciante.
         </p>
     </header>
 
     {{-- Contador --}}
     <div class="mb-6 text-center">
-        <p class="text-sm text-zinc-500 dark:text-zinc-400">Rebentaste</p>
+        <p class="text-sm text-zinc-500 dark:text-white/70">Rebentaste</p>
         <p class="text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 tabular-nums"
            x-text="contador.toLocaleString('pt-PT')">0</p>
-        <p class="text-sm text-zinc-500 dark:text-zinc-400">bolhas</p>
+        <p class="text-sm text-zinc-500 dark:text-white/70">bolhas</p>
     </div>
 
     {{-- Mensagem progressiva --}}

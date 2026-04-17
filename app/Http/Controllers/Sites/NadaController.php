@@ -32,8 +32,8 @@ class NadaController extends Controller
     private function seo(): array
     {
         return [
-            'title'          => 'Nada',
-            'description'    => 'Nada aqui. Mesmo nada. E mesmo assim estás a ler isto.',
+            'title'          => 'Nada — Literalmente Nada para Ver Aqui',
+            'description'    => 'Nada aqui. Mesmo nada. E mesmo assim estás a ler isto. Milhares de pessoas já viram o nada hoje. Quanto tempo aguentas a olhar para nada?',
             'og_title'       => 'Nada.',
             'og_description' => 'Não há nada aqui. Milhares de pessoas já viram o nada hoje.',
             'og_image'       => asset('images/og/nada.png'),

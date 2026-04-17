@@ -27,12 +27,12 @@
 <div class="min-h-screen flex flex-col items-center justify-center px-4 pb-32" x-data="botao()">
 
     <header class="text-center mb-8">
-        <p class="text-sm text-zinc-500 dark:text-zinc-400 mb-2">Já apertaram</p>
+        <p class="text-sm text-zinc-500 dark:text-white/70 mb-2">Já apertaram</p>
         <div class="text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 tabular-nums"
              x-text="total.toLocaleString('pt-PT')">
             {{ number_format($total, 0, ',', '.') }}
         </div>
-        <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">vezes</p>
+        <p class="text-sm text-zinc-500 dark:text-white/70 mt-1">vezes</p>
     </header>
 
     <button x-ref="botao"
@@ -52,13 +52,13 @@
            x-transition:enter="transition ease-out duration-300"
            x-transition:enter-start="opacity-0 translate-y-2"
            x-transition:enter-end="opacity-100 translate-y-0"
-           class="text-sm text-zinc-500 dark:text-zinc-400 italic"
+           class="text-sm text-zinc-500 dark:text-white/70 italic"
            x-text="mensagem">
         </p>
     </div>
 
     <div x-show="pressionado" x-cloak class="mt-4">
-        <p class="text-xs text-zinc-400 dark:text-zinc-500">
+        <p class="text-xs text-zinc-400 dark:text-white/60">
             Tu: <span x-text="meuTotal" class="font-semibold text-zinc-600 dark:text-zinc-300"></span> vezes
         </p>
     </div>

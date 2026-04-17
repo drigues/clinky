@@ -55,7 +55,7 @@ Actualiza esta secção após cada sessão concluída.
 - [x] `PROMPTS/11-progresso.md` — Barra de Progresso da Vida (closure compulsion)
 - [x] `PROMPTS/12-nada.md` — Nada (curiosidade pura)
 - [x] `PROMPTS/13-proibido.md` — O Botão Proibido (variable reward)
-- [ ] `PROMPTS/14-decisao.md` — A Decisão Impossível (paralisia de análise)
+- [x] `PROMPTS/14-decisao.md` — A Decisão Impossível (paralisia de análise)
 - [ ] `PROMPTS/15-20-restantes.md` — Oráculo, Pânico, Tempo, Lista, Conquistas, Ouviste
 
 ---
@@ -166,10 +166,10 @@ SESSION_EXPIRE_ON_CLOSE=true
 | `progresso` | clinky.cc/progresso | Closure compulsion | Não | `[x]` |
 | `nada` | clinky.cc/nada | Curiosidade pura | Não | `[x]` |
 | `proibido` | clinky.cc/proibido | Variable reward | Não | `[x]` |
-| `decisao` | clinky.cc/decisao | Paralisia de análise | Sim | `[ ]` |
-| `oraculo` | clinky.cc/oraculo | Efeito Barnum | Sim | `[ ]` |
-| `panico` | clinky.cc/panico | Urgência falsa | Sim | `[ ]` |
+| `decisao` | clinky.cc/decisao | Paralisia de análise | Sim | `[x]` |
+| `oraculo` | clinky.cc/oraculo | Efeito Barnum | Sim | `[x]` |
+| `panico` | clinky.cc/panico | Urgência falsa | Sim | `[x]` |
 | `tempo` | clinky.cc/tempo | Culpa produtiva | Não | `[ ]` |
-| `lista` | clinky.cc/lista | Identificação + humor | Não | `[ ]` |
-| `conquistas` | clinky.cc/conquistas | Completionism | Não | `[ ]` |
+| `lista` | clinky.cc/lista | Identificação + humor | Não | `[x]` |
+| `conquistas` | clinky.cc/conquistas | Completionism | Não | `[x]` |
 | `ouviste` | clinky.cc/ouviste | Curiosidade auditiva | Sim | `[ ]` |

@@ -28,12 +28,12 @@
 
     {{-- Splash --}}
     <div x-show="estado === 'splash'" class="flex flex-col items-center justify-center min-h-[80vh]">
-        <x-site-header
+        <x-hero
             emoji="🤔"
             title="Sou mais BR ou PT?"
             tagline="5 perguntas para descobrir o teu nível de sotaque"
-            accentColor="orange"
-        />
+            accent="#84cc16"
+            eyebrow="QUIZ · 08" />
         <button @click="estado = 'pergunta'"
                 class="bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-semibold py-4 px-8 rounded-xl transition-transform active:scale-95">
             Começar quiz
@@ -69,7 +69,7 @@
     <div x-show="estado === 'resultado'" x-cloak class="max-w-md mx-auto pt-12 text-center">
         <div class="text-6xl mb-4" x-text="resultadoEmoji"></div>
         <h2 class="text-2xl font-bold text-zinc-900 dark:text-zinc-100 mb-2" x-text="resultadoTitulo"></h2>
-        <p class="text-sm text-zinc-500 dark:text-zinc-400 mb-6" x-text="resultadoDescricao"></p>
+        <p class="text-sm text-zinc-500 dark:text-white/70 mb-6" x-text="resultadoDescricao"></p>
 
         <div class="flex items-center gap-4 justify-center mb-8">
             <div class="text-center">

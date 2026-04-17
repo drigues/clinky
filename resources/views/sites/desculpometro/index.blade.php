@@ -26,12 +26,12 @@
 @section('content')
 <div class="min-h-screen px-4 pb-32" x-data="desculpometro()">
 
-    <x-site-header
+    <x-hero
         emoji="😅"
         title="Desculpómetro"
         tagline="Gera a desculpa perfeita em 1 segundo"
-        accentColor="orange"
-    />
+        accent="#ff6b00"
+        eyebrow="IA · 01" />
 
     <div class="text-center mb-8">
         <x-counter-badge :count="$totalGeradas" label="desculpas geradas" />

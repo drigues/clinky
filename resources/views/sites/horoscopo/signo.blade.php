@@ -14,7 +14,7 @@
         <h1 class="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
             {{ $nome }}
         </h1>
-        <p class="mt-1 text-zinc-500 dark:text-zinc-400 text-xs">{{ $datas }}</p>
+        <p class="mt-1 text-zinc-500 dark:text-white/70 text-xs">{{ $datas }}</p>
         <p class="mt-2 text-purple-500 dark:text-purple-400 text-sm font-medium">
             Previsão de {{ now()->locale('pt')->isoFormat('D [de] MMMM') }}
         </p>
@@ -25,7 +25,7 @@
             <p class="text-lg leading-relaxed text-zinc-900 dark:text-zinc-100">
                 {{ $previsao }}
             </p>
-            <p class="mt-4 text-[10px] text-zinc-400 dark:text-zinc-500 italic">
+            <p class="mt-4 text-[10px] text-zinc-400 dark:text-white/60 italic">
                 * Previsão 100% inventada. As estrelas não se responsabilizam.
             </p>
         </div>

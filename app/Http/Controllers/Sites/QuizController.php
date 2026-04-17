@@ -116,8 +116,8 @@ class QuizController extends Controller
     private function seo(): array
     {
         return [
-            'title' => 'Sou Mais Brasileiro ou Português? — Quiz de 5 Perguntas',
-            'description' => 'Depois de anos em Portugal (ou no Brasil), quanto do outro país já absorbeste? Faz o quiz e descobre.',
+            'title' => 'Sou Mais BR ou PT? — Quiz de 5 Perguntas',
+            'description' => 'Depois de anos entre Portugal e o Brasil, quanto do outro país já absorbeste? 5 perguntas rápidas para descobrir a tua percentagem.',
             'og_title' => '🤔 Fiz o teste: sou X% português e Y% brasileiro',
             'og_description' => 'Quiz de 5 perguntas para descobrir se és mais BR ou PT. Resultado partilhável.',
             'og_image' => asset('images/og/quiz.png'),

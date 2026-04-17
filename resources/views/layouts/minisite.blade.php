@@ -41,15 +41,30 @@
 </head>
 <body class="bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 antialiased">
 
-    <div class="fixed top-4 left-4 z-50">
-        <a href="{{ route('home') }}"
-           class="text-xs text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300 flex items-center gap-1 transition-colors">
-            ← clinky.cc
-        </a>
-    </div>
+    @php
+        $slug = $slug ?? request()->segment(1) ?? '';
+        $backUrl = $slug ? route('home') . '#' . $slug : route('home');
+    @endphp
+
+    <a href="{{ $backUrl }}"
+       class="fixed top-4 left-4 md:top-6 md:left-6 z-50
+              inline-flex items-center gap-2
+              px-3 py-2 rounded-full
+              bg-black/40 backdrop-blur-sm border border-white/10
+              text-white/70 hover:text-white hover:bg-black/60
+              text-sm font-semibold transition-all">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        clinky.cc
+    </a>
 
     <main class="min-h-screen">
-        @yield('content')
+        <div class="container mx-auto px-5 py-8 md:px-10 md:py-16 lg:px-16">
+            <div class="mx-auto w-full max-w-3xl lg:max-w-5xl xl:max-w-6xl">
+                @yield('content')
+            </div>
+        </div>
     </main>
 
     @stack('scripts')

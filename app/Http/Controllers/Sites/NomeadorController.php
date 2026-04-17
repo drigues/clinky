@@ -172,8 +172,8 @@ class NomeadorController extends Controller
     private function seo(): array
     {
         return [
-            'title' => 'Nomeador de Grupos — Nomes Épicos para o Teu WhatsApp',
-            'description' => 'Chega de grupos chamados "Família 🏠". Gera o nome perfeito para o teu grupo de WhatsApp.',
+            'title' => 'Nomeador de Grupos — Nomes Épicos de WhatsApp',
+            'description' => 'Gera nomes épicos para os teus grupos de WhatsApp. Família, trabalho, amigos, casal — o nome perfeito está a três toques de distância.',
             'og_title' => '💬 O melhor nome de grupo que algures existiu',
             'og_description' => 'Gera nomes épicos para os teus grupos de WhatsApp. Grátis e partilhável.',
             'og_image' => asset('images/og/nomeador.png'),

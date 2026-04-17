@@ -26,14 +26,14 @@
 @section('content')
 <div class="min-h-screen px-4 pb-32" x-data="conversor()">
 
-    <x-site-header
+    <x-hero
         emoji="🇵🇹🇧🇷"
         title="Conversor PT ↔ BR"
         tagline="As palavras que nos separam (e unem)"
-        accentColor="blue"
-    />
+        accent="#2563eb"
+        eyebrow="LÍNGUA · 07" />
 
-    <div class="max-w-md mx-auto mb-6">
+    <div class="max-w-3xl mx-auto mb-6">
         <div class="relative">
             <input type="search"
                    x-model="pesquisa"
@@ -45,9 +45,9 @@
         </div>
     </div>
 
-    <div class="max-w-md mx-auto mb-4 flex items-center justify-between">
+    <div class="max-w-3xl mx-auto mb-4 flex items-center justify-between">
         <button @click="modo = modo === 'pt' ? 'br' : 'pt'"
-                class="flex items-center gap-2 text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">
+                class="flex items-center gap-2 text-sm font-medium text-zinc-600 dark:text-white/70 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">
             <span x-show="modo === 'pt'">🇵🇹 PT → BR 🇧🇷</span>
             <span x-show="modo === 'br'" x-cloak>🇧🇷 BR → PT 🇵🇹</span>
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/></svg>
@@ -55,7 +55,7 @@
         <span class="text-xs text-zinc-400" x-text="filtrados.length + ' palavras'"></span>
     </div>
 
-    <div class="max-w-md mx-auto mb-6 text-center" x-show="palavraDoDia" x-cloak>
+    <div class="max-w-3xl mx-auto mb-6 text-center" x-show="palavraDoDia" x-cloak>
         <div class="inline-flex items-center gap-2 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-full px-4 py-2 text-sm">
             <span>💡</span>
             <span class="text-blue-700 dark:text-blue-300">
@@ -64,7 +64,7 @@
         </div>
     </div>
 
-    <div class="max-w-md mx-auto space-y-3">
+    <div class="max-w-3xl mx-auto space-y-3">
         <template x-for="(item, idx) in filtrados" :key="idx">
             <button @click="seleccionado = seleccionado === idx ? null : idx"
                     class="w-full text-left bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-xl p-4 transition-colors hover:border-blue-300 dark:hover:border-blue-600">
@@ -78,7 +78,7 @@
                         </div>
                     </div>
                 </div>
-                <div x-show="seleccionado === idx" x-cloak class="mt-3 pt-3 border-t border-zinc-100 dark:border-zinc-800 text-xs text-zinc-500 dark:text-zinc-400 space-y-1">
+                <div x-show="seleccionado === idx" x-cloak class="mt-3 pt-3 border-t border-zinc-100 dark:border-zinc-800 text-xs text-zinc-500 dark:text-white/70 space-y-1">
                     <template x-if="item.exemplo_pt">
                         <p>🇵🇹 <span x-text="item.exemplo_pt"></span></p>
                     </template>
@@ -93,7 +93,7 @@
         </template>
     </div>
 
-    <div x-show="filtrados.length === 0" x-cloak class="max-w-md mx-auto mt-8 text-center">
+    <div x-show="filtrados.length === 0" x-cloak class="max-w-3xl mx-auto mt-8 text-center">
         <p class="text-zinc-400 text-sm">Sem resultados para "<span x-text="pesquisa"></span>"</p>
         <button @click="pesquisa = ''" class="mt-2 text-blue-500 text-sm hover:underline">Limpar pesquisa</button>
     </div>

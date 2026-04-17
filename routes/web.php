@@ -10,13 +10,18 @@ use App\Http\Controllers\Sites\BingoController;
 use App\Http\Controllers\Sites\BotaoController;
 use App\Http\Controllers\Sites\ConversorController;
 use App\Http\Controllers\Sites\CorporativoController;
+use App\Http\Controllers\Sites\DecisaoController;
 use App\Http\Controllers\Sites\DesculpometroController;
+use App\Http\Controllers\Sites\ListaController;
+use App\Http\Controllers\Sites\OraculoController;
+use App\Http\Controllers\Sites\PanicoController;
 use App\Http\Controllers\Sites\HoroscopoController;
 use App\Http\Controllers\Sites\NomeadorController;
 use App\Http\Controllers\Sites\BolhasController;
 use App\Http\Controllers\Sites\NadaController;
 use App\Http\Controllers\Sites\ProgressoController;
 use App\Http\Controllers\Sites\ProibidoController;
+use App\Http\Controllers\Sites\ConquistasController;
 use App\Http\Controllers\Sites\QuizController;
 use Illuminate\Support\Facades\Route;
 
@@ -98,4 +103,32 @@ Route::prefix('nada')->name('nada.')->group(function () {
 Route::prefix('proibido')->name('proibido.')->group(function () {
     Route::get('/', [ProibidoController::class, 'index'])->name('index');
     Route::post('/carregar', [ProibidoController::class, 'carregar'])->name('carregar')->middleware('throttle:60,1');
+});
+
+// A Decisão Impossível
+Route::prefix('decisao')->name('decisao.')->group(function () {
+    Route::get('/', [DecisaoController::class, 'index'])->name('index');
+    Route::post('/escolher', [DecisaoController::class, 'escolher'])->name('escolher')->middleware('throttle:10,1');
+});
+
+// O Oráculo
+Route::prefix('oraculo')->name('oraculo.')->group(function () {
+    Route::get('/', [OraculoController::class, 'index'])->name('index');
+    Route::post('/consultar', [OraculoController::class, 'consultar'])->name('consultar')->middleware('throttle:10,1');
+});
+
+// Coisas Que Nunca Vais Fazer
+Route::prefix('lista')->name('lista.')->group(function () {
+    Route::get('/', [ListaController::class, 'index'])->name('index');
+});
+
+// Modo Pânico
+Route::prefix('panico')->name('panico.')->group(function () {
+    Route::get('/', [PanicoController::class, 'index'])->name('index');
+    Route::post('/activar', [PanicoController::class, 'activar'])->name('activar')->middleware('throttle:10,1');
+});
+
+// Conquistas do Nada
+Route::prefix('conquistas')->name('conquistas.')->group(function () {
+    Route::get('/', [ConquistasController::class, 'index'])->name('index');
 });

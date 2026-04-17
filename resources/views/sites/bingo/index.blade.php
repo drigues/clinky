@@ -26,12 +26,12 @@
 @section('content')
 <div class="min-h-screen px-4 pb-32" x-data="bingo()">
 
-    <x-site-header
+    <x-hero
         emoji="🎯"
         title="Bingo do Imigrante"
         tagline="Quantas situações já viveste em Portugal?"
-        accentColor="yellow"
-    />
+        accent="#fbbf24"
+        eyebrow="PT / BR · 06" />
 
     <div class="text-center mb-6">
         <span class="inline-flex items-center gap-1.5 bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 text-sm font-medium px-4 py-2 rounded-full">
@@ -39,23 +39,24 @@
         </span>
     </div>
 
-    <div class="max-w-md mx-auto grid grid-cols-5 gap-1.5 sm:gap-2">
-        @foreach($quadrados as $i => $texto)
-        <button
-            @click="toggle({{ $i }})"
-            :class="marcados.includes({{ $i }})
-                ? 'bg-yellow-400 dark:bg-yellow-500 text-zinc-900 border-yellow-500 dark:border-yellow-600'
-                : 'bg-zinc-50 dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 border-zinc-200 dark:border-zinc-700'"
-            class="relative aspect-square border rounded-lg p-1 text-[9px] sm:text-[10px] leading-tight flex items-center justify-center text-center transition-colors hover:border-yellow-400 dark:hover:border-yellow-500"
-            aria-label="{{ $texto }}"
-        >
-            <span x-show="!marcados.includes({{ $i }})">{{ $texto }}</span>
-            <span x-show="marcados.includes({{ $i }})" x-cloak class="flex flex-col items-center gap-0.5">
-                <svg class="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>
-                <span class="line-through opacity-70">{{ $texto }}</span>
-            </span>
-        </button>
-        @endforeach
+    <div class="max-w-5xl mx-auto">
+        <div class="grid grid-cols-3 md:grid-cols-5 gap-2 md:gap-3">
+            @foreach($quadrados as $i => $texto)
+            <button @click="toggle({{ $i }})"
+                    :class="marcados.includes({{ $i }})
+                        ? 'bg-yellow-400 border-yellow-300 text-black'
+                        : 'bg-zinc-900 border-zinc-700 text-white hover:border-yellow-500/60'"
+                    class="aspect-square p-2 md:p-4 rounded-xl md:rounded-2xl
+                           border-2 transition-all duration-200
+                           flex items-center justify-center text-center
+                           text-[11px] md:text-sm font-bold leading-tight
+                           hover:scale-[1.03] active:scale-95"
+                    aria-label="{{ $texto }}">
+                <span x-show="!marcados.includes({{ $i }})">{{ $texto }}</span>
+                <span x-show="marcados.includes({{ $i }})" x-cloak class="text-2xl md:text-4xl">✓</span>
+            </button>
+            @endforeach
+        </div>
     </div>
 
     <div x-show="temBingo" x-cloak x-transition class="max-w-md mx-auto mt-6">
